@@ -1,0 +1,1 @@
+web: gunicorn volundear.wsgi --log-file -
