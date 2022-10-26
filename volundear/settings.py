@@ -43,12 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home',
     'daftarwilayah',
-    'daftarrelawan',
-    'donasi',
-    'profile',
-    'artikel',
 ]
 
 MIDDLEWARE = [
@@ -67,7 +62,7 @@ ROOT_URLCONF = 'volundear.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
