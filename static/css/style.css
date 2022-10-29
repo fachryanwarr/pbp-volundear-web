@@ -6,6 +6,7 @@ body {
     margin-left: 10px;
     font-weight: bold;
     font-size: 20px;
+    color: white;
 }
 
 /****************
@@ -218,4 +219,5 @@ body {
 #form-filter {
     text-align: right;
     margin-right: 20px;
+    color: white;
 }
