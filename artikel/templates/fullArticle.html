@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Artikel Lengkap</title>
+<link
+  rel="stylesheet"
+  href="{% static 'js/css/fullArticle.css' %}"
+/>
+{% endblock meta %}
+
+{% block content %}
+<body>
+    <section class="p-5">
+        <div class="container">
+            <h1>Artikel</h1>
+            <!-- Artikel -->
+            <div id="artikel-container">
+                <h2>{{artikel.judul}}</h2>
+                <h3>{{artikel.penulis}}</h3>
+                <h4>{{artikel.rilis}}</h4>
+                <h5>{{artikel.pembuka}}</h5>
+                <p>{{artikel.isi}}</p>
+            </div>
+        </div>
+    </section>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+{% endblock content %}
