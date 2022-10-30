@@ -11,8 +11,8 @@
 
 {% block content %}
 <body>
-    <section class="p-5">
-        <div class="container">
+    <section>
+        <div class="container p-5">
             <h1>Artikel</h1>
             <!-- Artikel -->
             <div id="artikel-container">
@@ -23,6 +23,7 @@
                 <p>{{artikel.isi}}</p>
             </div>
         </div>
+        {% include 'footer.html' %}
     </section>
 </body>
 
