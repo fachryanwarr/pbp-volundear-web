@@ -1,0 +1,265 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Daftar Wilayah</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+async function get_wilayah() {
+    return fetch("{% url 'daftarwilayah:get_wilayah' %}").then((res) => res.json())
+}
+
+async function show_wilayah() {
+    document.getElementById("daftar_wilayah").innerHTML = ""
+    const wilayah_item = await get_wilayah()
+    let htmlString = ``
+
+    htmlString += `
+    <div class="card">
+        <div class="card-body">
+            <a class="btn_new" onclick="open_form()">+</a>
+        </div>
+    </div>
+    `
+
+    wilayah_item.forEach((item) => {
+        
+    htmlString += `
+
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title"><p>${item.fields.name}</p></div>
+                <hr class="line">
+                <div class="card-content"><p>${item.fields.kota}</p></div>
+                <div class="card-content"><p>${item.fields.kuota_terisi}/${item.fields.kuota_max}</p></div>
+                <div class="detail-card"><a onclick="get_detail(${item.pk})" type="button">Lihat selengkapnya >></a></div>
+            </div>
+        </div>
+
+    ` 
+    })
+    
+    document.getElementById("daftar_wilayah").innerHTML = htmlString
+}
+
+async function newWilayah() {
+
+    const nama = $("#nama").val()
+    const kota = $("#kota").val()
+    const alamatLengkap = $("#alamatLengkap").val()
+    const kebutuhan = $("#kebutuhan").val()
+    const deskripsi = $("#deskripsi").val()
+    const kuota = $("#kuota").val()
+    const jangkaWaktu = $("#jangkaWaktu").val()
+
+
+    const data = {name:nama, 
+        kota:kota, 
+        address:alamatLengkap,
+        kuota_max:kuota,
+        description:deskripsi,
+        kebutuhan:kebutuhan,
+        jangka_waktu:jangkaWaktu, 
+        csrfmiddlewaretoken:'{{ csrf_token }}'}
+
+
+    $.ajax({url:"/daftarwilayah/add_new/", data:data, method:"POST"}).done(function (item) {
+        $("#daftar_wilayah").append(`
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title"><p>${item.fields.name}</p></div>
+                <hr class="line">
+                <div class="card-content"><p>${item.fields.kota}</p></div>
+                <div class="card-content"><p>0/${item.fields.kuota_max}</p></div>
+                <div class="detail-card"><a onclick="get_detail(${item.pk})" type="button">Lihat selengkapnya >></a></div>
+            </div>
+        </div>
+        
+        `)
+    })
+
+    document.getElementById("nama").value = ""
+    document.getElementById("kota").value = ""
+    document.getElementById("alamatLengkap").value = ""
+    document.getElementById("kebutuhan").value = ""
+    document.getElementById("deskripsi").value = ""
+    document.getElementById("kuota").value = ""
+    document.getElementById("jangkaWaktu").value = ""
+    document.getElementById("form-bg").style.display = "none"
+}
+
+async function get_wilayah_item(pk) {
+    return fetch("get-detail/" + pk).then((res) => res.json())
+}
+
+async function get_detail(pk) {
+    const item = await get_wilayah_item(pk)
+
+    document.getElementById("detail-wilayah").innerHTML = ""
+
+    let htmlString = `
+    <div class="detail-table">
+        <h3 class="detail-title">${item.fields.name}</h3>
+        <table>
+            <tr>
+                <td class="detail-content">Alamat lengkap</td>
+                <td class="detail-content isi">${item.fields.address}</td>
+            </tr>
+            <tr>
+                <td class="detail-content">Kebutuhan</td>
+                <td class="detail-content isi">${item.fields.kebutuhan}</td>
+            </tr>
+            <tr>
+                <td class="detail-content">Kuota</td>
+                <td class="detail-content isi">${item.fields.kuota_terisi}/${item.fields.kuota_max}</td>
+            </tr>
+            <tr>
+                <td class="detail-content">Jangka waktu</td>
+                <td class="detail-content isi">${item.fields.jangka_waktu}</td>
+            </tr>
+            <tr>
+                <td class="detail-content">Deskripsi</td>
+                <td class="detail-content isi">${item.fields.description}</td>
+            </tr>
+        </table>
+        <div class="detail-footer"><button class="daftar-btn" href="">Daftar</button><div>
+    </div>
+
+    `
+    document.getElementById("detail-wilayah").innerHTML = htmlString
+    document.getElementById("detail-bg").style.display = "block"
+}
+
+async function open_form() {
+    document.getElementById("form-bg").style.display = "block"
+}
+
+async function close_form() {
+    document.getElementById("form-bg").style.display = "none"
+}
+
+$(document).ready(function() {
+    show_wilayah()
+  })
+
+</script>
+{% endblock meta %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">Volundear</a>
+
+        <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="nav-menu">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                <li class="nav-item">
+                    <a class="nav-link" href="">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Feedback</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link login-btn" href="">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<h3 class="sub-title">Daftar Wilayah</h3>
+
+<div id="form-filter">
+    <label for="daftar-kota">filter berdasarkan:</label>
+    <select id="daftar-kota">
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="fiat">Fiat</option>
+      <option value="audi">Audi</option>
+    </select>
+    <input type="submit" value="Terapkan">
+</div>
+
+<div id="daftar_wilayah" class="flex-container"></div>
+
+<div id="detail-bg">
+    <div id="detail-wilayah"></div>
+</div>
+
+<div id="form-bg">
+
+    <div id="form-newWilayah" aria-hidden="true">
+
+        <div class="modal-header">
+            <h3 id="modal-title">Tambah Wilayah</h3>
+        </div>
+
+        <div class="modal-body">
+            <form>
+                {% csrf_token %}
+                
+                <div class="modal-content">
+                    <div class="label-form"><label>Nama tempat</label></div>
+                    <div class="input-form"><input type="text" id="nama"></div>
+                </div>
+
+                <div class="modal-content">
+                    <div class="label-form"><label>Kota</label></div>
+                    <div class="input-form"><input type="text" id="kota"></div>
+                </div>
+
+                <div class="modal-content">
+                    <div class="label-form"><label>Alamat lengkap</label></div>
+                    <div class="input-form"><textarea id="alamatLengkap"></textarea></div>
+                </div>
+
+                <div class="modal-content">
+                    <div class="label-form"><label>Kebutuhan</label></div>
+                    <select id="kebutuhan" class="input-form" style="width:40%;">
+                        <option value="Tenaga medis">Tenaga medis</option>
+                        <option value="Pengajar SD">Pengajar SD</option>
+                        <option value="Pengajar SMP">Pengajar SMP</option>
+                        <option value="Pengajar SMA">Pengajar SMA</option>
+                        <option value="Ahli lingkungan">Ahli lingkungan</option>
+                        <option value="Ahli infrastruktur">Ahli infrastruktur</option>
+                        <option value="Pemanfaatan sumber daya">Pemanfaatan sumber daya</option>
+                      </select>
+                </div>
+
+                <div class="modal-content">
+                    <div class="label-form"><label>Deskripsi</label></div>
+                    <div class="input-form"><textarea id="deskripsi"></textarea></div>
+                </div>
+
+                <div class="modal-content">
+                    <div class="label-form"><label>Jumlah relawan yang dibutuhkan</label></div>
+                    <div class="input-form"><input type="text" id="kuota"></div>
+                </div>
+
+                <div class="modal-content">
+                    <div class="label-form"><label>Jangka waktu</label></div>
+                    <div class="input-form"><input type="text" id="jangkaWaktu"></div>
+                </div>
+            
+            </form>
+        </div>
+
+        <div class="modal-footer">
+            <button onclick="close_form()" class="btn-form" type="button">Batal</button>
+            <button onclick="newWilayah()" class="btn-form" type="submit" value="submit">Tambah</button>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}
