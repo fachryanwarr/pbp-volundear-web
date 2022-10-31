@@ -66,3 +66,19 @@ def get_wilayah_detail(request, id):
         }
     return JsonResponse(hasil)
 
+def get_daftar_kota(request):
+    list_wilayah = Wilayah.objects.all()
+
+    set_kota = []
+    for wilayah in list_wilayah:
+        set_kota.append(wilayah.kota)
+
+    set_kota = set(set_kota)
+    list_kota = list(set_kota)
+
+    hasil = {
+        'list_kota':list_kota,
+    }
+
+    return JsonResponse(hasil)
+

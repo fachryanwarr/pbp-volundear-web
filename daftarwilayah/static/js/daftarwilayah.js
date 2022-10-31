@@ -61,13 +61,18 @@ function newWilayah() {
     document.getElementById("kuota").value = ""
     document.getElementById("jangkaWaktu").value = ""
     document.getElementById("form-bg").style.display = "none"
+
+    get_kota()
 }
 
 function get_detail(pk) {
     $.get('./get-detail/' + pk, function(item) {
         document.getElementById("detail-wilayah").innerHTML = `
         <div class="detail-table">
-            <h3 class="detail-title">${item.fields.name}</h3>
+            <div class="detail-title">
+                <h3 style="font-weight: bold; ">${item.fields.name} <span><button class="x-btn float-end" onclick="exit_detail()">x</button></span></h3>
+            </div>
+
             <table>
                 <tr>
                     <td class="detail-content">Alamat lengkap</td>
@@ -98,6 +103,10 @@ function get_detail(pk) {
     document.getElementById("detail-bg").style.display = "block"
 }
 
+function exit_detail() {
+    document.getElementById("detail-bg").style.display = "none"
+}
+
 function open_form() {
     document.getElementById("form-bg").style.display = "block"
 }
@@ -106,4 +115,45 @@ function close_form() {
     document.getElementById("form-bg").style.display = "none"
 }
 
+function get_kota() {
+    $.get('./get-daftar-kota/', function(item) {
+
+        document.getElementById("daftar-kota").innerHTML = ""
+
+        for (let i = 0; i< item.list_kota.length; i++) {
+            $("#daftar-kota").append(`
+                <option value="${item.list_kota[i]}">${item.list_kota[i]}</option>
+            `)
+        }
+
+    })
+}
+
+function filter() {
+    let kota = $("#daftar-kota").val()
+
+    document.getElementById("daftar_wilayah").innerHTML = ""
+
+    $.get('./json', function(item) {
+        for (let i = 0; i < item.length; i++) {
+            if (item[i].fields.kota == kota) {
+                $("#daftar_wilayah").append(`
+                
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title"><p>${item[i].fields.name}</p></div>
+                        <hr class="line">
+                        <div class="card-content"><p>${item[i].fields.kota}</p></div>
+                        <div class="card-content"><p>0/${item[i].fields.kuota_max}</p></div>
+                        <a class="detail-card"b onclick="get_detail(${item.pk})" type="button">Lihat selengkapnya >></a>
+                    </div>
+                </div>
+                
+                `)
+            }
+        }
+    })
+}
+
 get_wilayah()
+get_kota()

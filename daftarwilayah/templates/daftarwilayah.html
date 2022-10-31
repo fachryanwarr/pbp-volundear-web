@@ -47,21 +47,16 @@
     <h3 class="sub-title">Daftar Wilayah</h3>
     
     <div id="form-filter">
-        <label for="daftar-kota">filter berdasarkan:</label>
+        <label>filter berdasarkan </label>
         <select id="daftar-kota">
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="fiat">Fiat</option>
-          <option value="audi">Audi</option>
+
         </select>
-        <input type="submit" value="Terapkan">
+        <button onclick="filter()" type="button">Terapkan</button>
     </div>
     
     <div id="daftar_wilayah" class="flex-container">
         <div class="card">
-            <div class="card-body">
-                <a class="btn_new" onclick="open_form()">+</a>
-            </div>
+            <a class="btn_new" onclick="open_form()">+</a>
         </div>
     </div>
     
@@ -134,7 +129,7 @@
     
         </div>
     </div>
-    
+
 </section>
 
 {% endblock content %}

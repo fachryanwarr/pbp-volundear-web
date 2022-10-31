@@ -103,13 +103,13 @@ body {
     text-decoration: none;
     text-align: right;
     color: white;
-    vertical-align: bottom;
 }
 .btn_new {
     vertical-align: middle;
     text-decoration: none;
     font-size: 50px;
     color: #060C23;
+    margin: auto;
 }
 
 
@@ -172,6 +172,10 @@ body {
     font-size: 25px;
     padding: 10px 15px
 }
+.x-btn {
+    background-color: #0AA4E7;
+    border: none;
+}
 .detail-table {
     width: 500px;
     margin: auto;
@@ -196,6 +200,7 @@ body {
     border-radius: 10px;
     padding-bottom: 10px;
 }
+
 
 /* Scrollbar */
 /* width */
