@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Komentar</title>
+<style>
+    p{
+        color: white;
+    }
+    h1{
+        color: white;
+    }
+</style>
+{% endblock meta %}
+
+{% block content %}
+<body>
+    <section>
+        <div class="container p-5">
+            <h1>Tambah Komentar</h1>
+            <br>
+            <div class="form-group">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-secondary">Tambah Komentar</button>
+                </form>
+            </div>
+        </div>
+        {% include 'footer.html' %}
+    </section>
+</body>
+
+{% endblock content %}

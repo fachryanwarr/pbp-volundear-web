@@ -22,6 +22,23 @@
                 <h5>{{artikel.pembuka}}</h5>
                 <p>{{artikel.isi}}</p>
             </div>
+            <div id="komentar-container">
+                <br>
+                <h1>Komentar</h1>
+                {% if not artikel.comments.all %}
+                    <h6 class="text-white">Belum ada komentar</h6>
+                {% else %}
+                    {% for comment in artikel.comments.all %}
+                        <strong class="text-white">
+                            {{ comment.penulis }} - {{ comment.waktu }}
+                        </strong>
+                        <br>
+                        <h6 class="text-white">{{ comment.deskripsi }}</h6>
+                        <br>
+                    {% endfor %}
+                {% endif %}
+                <a href="komentar/" class="a2" style="text-decoration: none;">Tambah Komentar</a>
+            </div>
         </div>
         {% include 'footer.html' %}
     </section>
