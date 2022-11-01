@@ -6,4 +6,5 @@ urlpatterns = [
     path('artikel/', include('artikel.urls')),
     path('daftarrelawan/', include('daftarrelawan.urls')),
     path('daftarwilayah/', include('daftarwilayah.urls')),
+    path('auth/', include('authentication.urls')),
 ]

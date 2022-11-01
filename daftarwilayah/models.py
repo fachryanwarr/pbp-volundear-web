@@ -1,9 +1,10 @@
 from email.policy import default
 from django.db import models
 from django.contrib.auth.models import User
+from authentication.models import VolundearUser
 
 class Wilayah(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(VolundearUser, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     kota = models.CharField(max_length=20)
     kebutuhan = models.TextField(default="")
