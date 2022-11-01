@@ -1,4 +1,4 @@
 from django.contrib import admin
-from authentication.models import VolundearUser
+from authentication.models import User
 
-admin.site.register(VolundearUser)
+admin.site.register(User)

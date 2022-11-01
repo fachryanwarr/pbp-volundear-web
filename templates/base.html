@@ -22,45 +22,72 @@
 
   <!-- style -->
   <link rel="stylesheet" href="{% static '/css/style.css' %}">
+
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="{% static '/images/logo.png' %}">
   
   {% block meta %}
   {% endblock meta %}
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">Volundear</a>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'landingpage:show_landingpage' %}"><img src="{% static '/images/logo.png' %}" style="width: 30px; height: 30px" alt="Logo Volundear"> 
+                Volundear</a>
 
-        <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+            
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="{% url 'landingpage:show_landingpage' %}">Home</a>
+                    </li>
 
-        <div class="nav-menu">
-            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                <li class="nav-item">
-                    <a class="nav-link" href="">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Feedback</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Contact Us</a>
-                </li>
-                <li class="nav-item">
-                    {% if request.user.is_authenticated %}
-                    <a class="nav-link login-btn" href="{% url 'authentication:logout' %}">Logout</a>
-                    {% else %}
-                    <a class="nav-link login-btn" href="{% url 'authentication:login' %}">Login</a>
-                    {% endif %}
-                </li>
-            </ul>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Features
+                      </a>
+
+                      <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" href="{% url 'daftarwilayah:show_wilayah' %}">Daftar Wilayah</a></li>
+                        <li><a class="dropdown-item" href="{% url 'artikel:show_artikel' %}">Artikel</a></li>
+                        <li><a class="dropdown-item" href="#">Donasi</a></li>
+                        <li>
+                          <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Feedback</a></li>
+                      </ul>
+
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Profile</a>
+                    </li>
+                    <hr class="dropdown-divider">
+                    <li class="nav-item">
+                      {% if request.user.is_authenticated %}
+                      <a class="nav-link login-btn" href="{% url 'authentication:logout' %}" style="color:yellow;">Logout</a>
+                      {% else %}
+                      <a class="nav-link login-btn" href="{% url 'authentication:login' %}" style="color:yellow;">Login</a>
+                      {% endif %}
+                    </li>
+
+                </ul>
+            </div>
+          </div>
         </div>
-    </div>
-  </nav>
+      </nav>
+      
   {% block content %}
 
   {% endblock content %}

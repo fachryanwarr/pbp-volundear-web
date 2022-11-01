@@ -14,6 +14,9 @@
 
 {% block content %}
 <section>
+    <!-- <p style="color: white;">{{user.username}}</p>
+    <p style="color: white;">{{user.is_PJ}}</p>
+    <p style="color: white;">{{user.is_relawan}}</p> -->
     <h3 class="sub-title">Daftar Wilayah</h3>
     
     <div id="form-filter">
@@ -85,8 +88,13 @@
                     </div>
     
                     <div class="modal-content">
-                        <div class="label-form"><label>Jangka waktu</label></div>
-                        <div class="input-form"><input type="text" id="jangkaWaktu"></div>
+                        <div class="label-form"><label>Mulai periode</label></div>
+                        <div class="input-form"><input type="date" id="waktuMulai"></div>
+                    </div>
+
+                    <div class="modal-content">
+                        <div class="label-form"><label>Akhir periode</label></div>
+                        <div class="input-form"><input type="date" id="waktuSelesai"></div>
                     </div>
                 
                 </form>

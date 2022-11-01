@@ -150,4 +150,4 @@ for directory in [*STATICFILES_DIRS, STATIC_ROOT]:
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'authentication.VolundearUser'
+AUTH_USER_MODEL = 'authentication.User'
