@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+
+<title>Login</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<link rel="stylesheet" href="{% static '/css/auth.css' %}">
+
+{% endblock meta %}
+
+{% block content %}
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <h2 class="title">Login</h2>
+
+        <div class="form-outline form-white mb-4">
+            <label class="form-label" for="username">Username</label>
+        <input type="text" id="username" name="username" class="form-control form-control-lg">
+        
+        </div>
+
+        <div class="form-outline form-white mb-4">
+            <label class="form-label" for="typePasswordX">Password</label>
+            <input type="password" id="password" name="password" class="form-control form-control-lg" />
+        </div>
+
+        <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+
+    </form>
+
+    <div>
+        <p class="mb-0">Belum mempunyai akun? <a href="{% url 'authentication:register' %}" class="text-white-50 fw-bold">Register</a></p>
+    </div>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}     
+
+{% endblock content %}
