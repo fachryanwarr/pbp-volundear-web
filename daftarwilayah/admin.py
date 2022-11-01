@@ -1,3 +1,4 @@
 from django.contrib import admin
+from daftarwilayah.models import Wilayah
 
-# Register your models here.
+admin.site.register(Wilayah)

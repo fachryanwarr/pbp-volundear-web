@@ -1,0 +1,122 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background: #7366FE;
+}
+.container{
+    position: relative;
+    width: 100%;
+    max-width: 2040px;
+    padding: 20px 30px;
+}
+.row{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.card{
+    background: #ffffff;
+    border: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+h1{
+    position: relative;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    color: #FFFFFF;
+}
+h2{
+    margin-top: 10px;
+    margin-bottom: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    position: relative;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    color: #28293D;
+}
+h3{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: #28293D;
+    margin-left: 10px;
+    margin-right: 2px;
+    margin-top: 5px;
+}
+h4{
+    margin-top: 10px;
+    margin-bottom: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    position: relative;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 25px;
+    color: #28293D;
+    text-align: justify;
+}
+p{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: black;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+.a2{
+    position: relative;
+    display: flow-root;
+    font-style: normal;
+    font-weight: lighter;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: right;
+    color: #3E405B;
+    text-decoration: none;
+    margin-top: 2px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+}
+.btn{
+    border: 5px;
+    outline: none;
+    height: 35px;
+    width: 110px;
+    background: #4EC1F3;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 12px;
+   
+}
+.button{
+    border: none;
+    outline: none;
+    background: none;
+    font-weight: lighter;
+    font-size: 14px;
+
+}
+.list-group-item.satu{
+    background:#4EC1F3;
+}
+.list-group-item.dua{
+    background:#4EC1F3;
+}
