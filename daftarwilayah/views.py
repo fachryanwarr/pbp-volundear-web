@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.urls import reverse
 from django.core import serializers
 from daftarwilayah.models import Wilayah
+from django.views.decorators.csrf import csrf_exempt
 
 def show_wilayah(request):
     content = {}
@@ -18,6 +19,7 @@ def get_wilayah(request):
 
     return HttpResponse(serializers.serialize("json", wilayah_items), content_type="application/json")
 
+@csrf_exempt
 def add_wilayah(request):
     if request.method == "POST":
         name = request.POST.get('name')
@@ -62,5 +64,21 @@ def get_wilayah_detail(request, id):
             },
             'pk':wilayah.pk
         }
+    return JsonResponse(hasil)
+
+def get_daftar_kota(request):
+    list_wilayah = Wilayah.objects.all()
+
+    set_kota = []
+    for wilayah in list_wilayah:
+        set_kota.append(wilayah.kota)
+
+    set_kota = set(set_kota)
+    list_kota = list(set_kota)
+
+    hasil = {
+        'list_kota':list_kota,
+    }
+
     return JsonResponse(hasil)
 

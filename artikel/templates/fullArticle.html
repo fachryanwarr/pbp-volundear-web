@@ -10,39 +10,36 @@
 {% endblock meta %}
 
 {% block content %}
-<body>
-    <section>
-        <div class="container p-5">
-            <h1>Artikel</h1>
-            <!-- Artikel -->
-            <div id="artikel-container">
-                <h2>{{artikel.judul}}</h2>
-                <h3>{{artikel.penulis}}</h3>
-                <h4>{{artikel.rilis}}</h4>
-                <h5>{{artikel.pembuka}}</h5>
-                <p>{{artikel.isi}}</p>
-            </div>
-            <div id="komentar-container">
-                <br>
-                <h1>Komentar</h1>
-                {% if not artikel.comments.all %}
-                    <h6 class="text-white">Belum ada komentar</h6>
-                {% else %}
-                    {% for comment in artikel.comments.all %}
-                        <strong class="text-white">
-                            {{ comment.penulis }} - {{ comment.waktu }}
-                        </strong>
-                        <br>
-                        <h6 class="text-white">{{ comment.deskripsi }}</h6>
-                        <br>
-                    {% endfor %}
-                {% endif %}
-                <a href="komentar/" class="a2" style="text-decoration: none;">Tambah Komentar</a>
-            </div>
+<section class="section2">
+    <div class="container p-5">
+        <h1>Full Artikel</h1>
+        <!-- Artikel -->
+        <div id="artikel-container">
+            <h2>{{artikel.judul}}</h2>
+            <h3>{{artikel.penulis}}</h3>
+            <h4>{{artikel.rilis}}</h4>
+            <h5>{{artikel.pembuka}}</h5>
+            <p>{{artikel.isi}}</p>
         </div>
-        {% include 'footer.html' %}
-    </section>
-</body>
+        <div id="komentar-container">
+            <br>
+            <h1>Komentar</h1>
+            <a href="komentar/" class="a2" style="text-decoration: none;">Tambah Komentar</a>
+            {% if not artikel.comments.all %}
+                <h6 class="text-white">Belum ada komentar</h6>
+            {% else %}
+                {% for comment in artikel.comments.all %}
+                    <strong class="text-white">
+                        {{ comment.penulis }} - {{ comment.waktu }}
+                    </strong>
+                    <br>
+                    <h6 class="text-white">{{ comment.deskripsi }}</h6>
+                    <br>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</section>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 {% endblock content %}

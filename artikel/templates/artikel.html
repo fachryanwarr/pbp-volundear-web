@@ -14,59 +14,58 @@
     type="text/javascript"
     src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
 ></script>
-       
-<body style="background: #060C23;">
-    <section>
-        {% include 'carousel.html' %}
-        <div class="container p-5">
-            <h1>Artikel</h1>
-            <div class="d-grid gap-2 d-md-block">
-                <!-- Button trigger modal -->
-                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Tambah Artikel</button>    
-                <br>
-            </div>
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: #28293D;">Membuat Artikel</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="POST" action="">
-                            {% csrf_token %}
-                            <div class="mt-4">
-                                <label for="Title">Judul</label>
-                            </div>
-                            <input id="title-controller" type="text" name="judul" placeholder="Judul" required class="form-control">
-                            <div class="mt-4">
-                                <label for="description">Pembuka Artikel</label>
-                            </div>
-                            <textarea id="pembuka-controller" name="pembuka" placeholder="Pembuka Artikel" cols="50" rows="10" class="form-control" required></textarea>
-                            <div class="mt-4">
-                                <label for="description">Artikel</label>
-                            </div>
-                            <textarea id="isi-controller" name="isi" placeholder="Artikel" cols="50" rows="10" class="form-control" required></textarea>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button id="save-article" type="submit" class="btn btn-primary" value="Submit" onclick="">Add Article</button>
-                            </div>
-                        </form>
-                    </div>
+<section class="section2">
+    {% include 'carousel.html' %}
+</section>
+<section class="section1">
+    <div class="container p-5">
+        <h1>Artikel</h1>
+        <div class="d-grid gap-2 d-md-block">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Tambah Artikel</button>    
+            <br>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: #28293D;">Membuat Artikel</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <div class="modal-body">
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <div class="mt-4">
+                            <label for="Title">Judul</label>
+                        </div>
+                        <input id="title-controller" type="text" name="judul" placeholder="Judul" required class="form-control">
+                        <div class="mt-4">
+                            <label for="description">Pembuka Artikel</label>
+                        </div>
+                        <textarea id="pembuka-controller" name="pembuka" placeholder="Pembuka Artikel" cols="50" rows="10" class="form-control" required></textarea>
+                        <div class="mt-4">
+                            <label for="description">Artikel</label>
+                        </div>
+                        <textarea id="isi-controller" name="isi" placeholder="Artikel" cols="50" rows="10" class="form-control" required></textarea>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button id="save-article" type="submit" class="btn btn-primary" value="Submit" onclick="">Add Article</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-
-            <!-- card  -->
-            <div id="artikel-container" class="row text-center g-4">
-                
             </div>
         </div>
-        {% include 'footer.html' %}
-    </section>
-</body>
+
+        <!-- card  -->
+        <div id="artikel-container" class="row text-center g-4">
+            
+        </div>
+    </div>
+</section>
 
 <script
 type="text/javascript"
