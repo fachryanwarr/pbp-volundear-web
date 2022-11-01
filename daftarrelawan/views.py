@@ -19,15 +19,3 @@ def daftar_relawan(request):
     context = {}
     context['form'] = DaftarRelawanForm()
     return render(request, 'daftarrelawan.html', context)
-
-# def create_relawan(request):
-#     if (request.method == "POST"):
-#         title = request.POST["title"]
-#         currentDate = datetime.date.today()
-#         date = currentDate.strftime("%Y-%m-%d")
-#         description = request.POST["description"]
-#         task = ItemTodolist(user=request.user, title=title,date=date, description=description)
-#         task.save()
-#         return redirect('todolist:show_todolist')
-    
-#     return render(request, 'create_task.html')
