@@ -10,7 +10,7 @@ class PJSignUpView(CreateView):
     template_name = 'register_PJ.html'
 
     def get_context_data(self, **kwargs):
-        kwargs['user_type'] = 'Relawan'
+        kwargs['user_type'] = 'PJ'
         return super().get_context_data(**kwargs)
     
     def form_valid(self, form):

@@ -7,18 +7,16 @@ class RelawanSignUpForm(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
         model = VolundearUser
-        fields = {'username', 'full_name', 'email', 'password', 'password2', 'jenis_kelamin'}
+        fields = {'username', 'password1', 'password2'}
     
     def __init__(self, *args, **kwargs):
         super(RelawanSignUpForm, self).__init__(*args, **kwargs)
 
         self.fields['username'].widget.attrs['class'] = 'form-control register-relawan'
-        self.fields['full_name'].widget.attrs['class'] = 'form-control register-relawan'
-        self.fields['password'].widget.attrs['class'] = 'form-control register-relawan'
+        self.fields['password1'].widget.attrs['class'] = 'form-control register-relawan'
         self.fields['password2'].widget.attrs['class'] = 'form-control register-relawan'
-        self.fields['jenis_kelamin'].widget.attrs['class'] = 'form-control register-relawan'
 
-        for fieldname in ['username', 'full_name', 'password', 'password2', 'jenis_kelamin']:
+        for fieldname in ['username', 'password1', 'password2']:
             self.fields[fieldname].help_text = None
     
     @transaction.atomic
@@ -33,18 +31,16 @@ class PJSignUpForm(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
         model = VolundearUser
-        fields = {'username', 'full_name', 'email', 'password', 'password2', 'jenis_kelamin'}
+        fields = {'username','password1', 'password2'}
 
     def __init__(self, *args, **kwargs):
         super(PJSignUpForm, self).__init__(*args, **kwargs)
 
         self.fields['username'].widget.attrs['class'] = 'form-control register-relawan'
-        self.fields['full_name'].widget.attrs['class'] = 'form-control register-relawan'
-        self.fields['password'].widget.attrs['class'] = 'form-control register-relawan'
+        self.fields['password1'].widget.attrs['class'] = 'form-control register-relawan'
         self.fields['password2'].widget.attrs['class'] = 'form-control register-relawan'
-        self.fields['jenis_kelamin'].widget.attrs['class'] = 'form-control register-relawan'
 
-        for fieldname in ['username', 'full_name', 'password', 'password2', 'jenis_kelamin']:
+        for fieldname in ['username', 'password1', 'password2']:
             self.fields[fieldname].help_text = None
 
 
