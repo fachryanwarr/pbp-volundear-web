@@ -10,3 +10,12 @@ class Artikel(models.Model):
 
     class Meta:
         ordering = ['-pk']
+
+class Komentar(models.Model):
+    artikel = models.ForeignKey(Artikel,related_name="comments", on_delete=models.CASCADE)
+    penulis = models.ForeignKey(VolundearUser, on_delete=models.CASCADE)
+    waktu = models.DateField(auto_now_add=True)
+    deskripsi = models.TextField()
+
+    class Meta:
+        ordering = ['-pk']
