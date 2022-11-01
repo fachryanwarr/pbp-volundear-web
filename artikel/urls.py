@@ -9,4 +9,5 @@ urlpatterns = [
     path('add/',create_article_AJAX, name='create_article_AJAX'),
     path('delete/<int:id>/', delete, name='delete'),
     path('full-article/<int:id>/',full_article, name='full_article'),
+    path('full-article/<int:id>/komentar/', AddCommentView.as_view(), name='add_comment'),
 ]

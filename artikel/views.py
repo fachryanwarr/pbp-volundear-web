@@ -1,8 +1,11 @@
 from django.shortcuts import redirect, render, get_object_or_404
+from django.urls import reverse_lazy
 from artikel.models import *
+from artikel.forms import *
 from django.http import HttpResponse, JsonResponse
 from django.core import serializers
 from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import CreateView
 
 #@login_required(login_url='/todolist/login/')
 def show_artikel(request):
@@ -50,3 +53,15 @@ def full_article(request,id):
     'artikel': data,
     }
     return render(request, "fullArticle.html", context)
+
+#@login_required(login_url='/todolist/login/')
+class AddCommentView(CreateView):
+    model = Komentar
+    form_class = CommentForm
+    template_name = 'tambahKomentar.html'
+    def form_valid(self, form):
+        form.instance.artikel_id = self.kwargs['id']
+        form.instance.penulis = self.request.user
+        return super().form_valid(form)
+
+    success_url = reverse_lazy('artikel:show_artikel')
