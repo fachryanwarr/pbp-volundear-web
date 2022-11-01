@@ -1,6 +1,16 @@
+from django.http import HttpResponse
 from django.shortcuts import render
+from django.core import serializers
+from landingpage.models import Faq
 
 def show_landingpage(request):
-    return render(request, "index.html")
+    data_faq = Faq.objects.all()
+    context = {
+        # 'faq' : data_faq,
+    }
+    return render(request, "index.html", context)
 
-# Create your views here.
+def get_faq(request):
+    FAQ = Faq.objects.all()
+
+    return HttpResponse(serializers.serialize("json", FAQ), content_type="application/json")

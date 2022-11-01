@@ -15,6 +15,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <!-- FontAwesome Cdn-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        function get_faq() {
+            $.get('./json', function(faqs) {
+                for (let i = 0; i < faqs.length; i++) {
+                    $("#faq-section").append(`
+
+                    <details>
+                        <summary>${faqs[i].fields.question}</summary>
+                        <div>${faqs[i].fields.answer}</div>
+                    </details>
+
+                    `)
+                }
+            })
+        }
+
+        get_faq()
+    </script>
+
   </head>
   <body style="color: white;
   background-color: #1E1E1E ;">
@@ -218,42 +239,17 @@
     <!-- faq-->
     <div class="container">
         <h1>Frequently Asked Questions</h1>
+        <div id="faq-section">
+
+        </div>
+        <!-- {%for i in faq%}
         <details>
-        <summary>How do I create accordion?</summary>
-        <div>
-       The tags <em>details</em> and <em>summary</em> have you covered.
-        </div>
-      </details>
-      <details>
-        <summary>How do I create accordion?</summary>
-        <div>
-       The tags <em>details</em> and <em>summary</em> have you covered.
-        </div>
-      </details>
-      <details>
-        <summary>How do I create accordion?</summary>
-        <div>
-       The tags <em>details</em> and <em>summary</em> have you covered.
-        </div>
-      </details>
-      <details>
-        <summary>How do I create accordion?</summary>
-        <div>
-       The tags <em>details</em> and <em>summary</em> have you covered.
-        </div>
-      </details>
-      <details>
-        <summary>How do I create accordion?</summary>
-        <div>
-       The tags <em>details</em> and <em>summary</em> have you covered.
-        </div>
-      </details>
-      <details>
-        <summary>How do I create accordion?</summary>
-        <div>
-       The tags <em>details</em> and <em>summary</em> have you covered.
-        </div>
-      </details>
+            <summary>{{i.question}}</summary>
+            <div>{{i.answer}}</div>
+        </details>
+        {%endfor%} -->
+      
+     
       </div>
     <!-- End faq-->
 
