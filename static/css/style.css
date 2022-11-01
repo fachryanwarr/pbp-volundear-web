@@ -1,0 +1,35 @@
+body {
+    background-color: #060C23;
+    font-family: "Lexend";
+}
+.sub-title {
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+}
+
+/****************
+*    NAVBAR     *
+******************/
+
+.navbar {
+    height: 50px;
+    background-color: #4EC1F3;
+    margin-bottom: 10px;
+}
+.nav-menu {
+    float: right;
+}
+.nav-item {
+    float: right;
+    padding: 10px;
+}
+.nav-link {
+    color: white
+}
+.login-btn {
+    border-radius: 10px;
+    border-color: white;
+    border: 2px;
+}

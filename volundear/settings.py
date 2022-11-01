@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'daftarwilayah',
     'landingpage',
     'daftarrelawan',
+    'authentication',
 ]
 
 MIDDLEWARE = [
@@ -148,3 +149,5 @@ for directory in [*STATICFILES_DIRS, STATIC_ROOT]:
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'authentication.VolundearUser'
