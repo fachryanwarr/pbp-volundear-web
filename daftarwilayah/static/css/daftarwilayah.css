@@ -74,13 +74,13 @@
 }
 .card {
     width: 20vw;
-    height: 30vw;
     text-align: center;
     background-color: #4EC1F3;
     color: black;
     border-radius: 10px;
     margin: 15px;
 }
+
 .card-title {
     font-weight: bold;
 }

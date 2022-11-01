@@ -19,16 +19,16 @@ def get_wilayah(request):
 
     return HttpResponse(serializers.serialize("json", wilayah_items), content_type="application/json")
 
-@login_required(login_url='/auth/login/')
+# @login_required(login_url='/auth/login/')
 @csrf_exempt
 def add_wilayah(request):
     current_user = auth.get_user(request)
 
-    if (not current_user.is_PJ):
-        hasil = {
-            'status':True
-        }
-        return JsonResponse(hasil)
+    # if (not current_user.is_PJ):
+    #     hasil = {
+    #         'status':True
+    #     }
+    #     return JsonResponse(hasil)
 
     if request.method == "POST":
         name = request.POST.get('name')
@@ -52,7 +52,8 @@ def add_wilayah(request):
                 'kuota_max':wilayah.kuota_max,
                 'description':wilayah.description,
                 'kebutuhan':wilayah.kebutuhan,
-                'jangka_waktu':wilayah.jangka_waktu
+                'awal_periode':wilayah.awalPeriode,
+                'akhir_periode':wilayah.akhirPeriode,
             },
             'pk':wilayah.pk,
             'status':False
@@ -72,7 +73,8 @@ def get_wilayah_detail(request, id):
                 'kuota_max':wilayah.kuota_max,
                 'kuota_terisi':wilayah.kuota_terisi,
                 'description':wilayah.description,
-                'jangka_waktu':wilayah.jangka_waktu,
+                'awal_periode':wilayah.awalPeriode,
+                'akhir_periode':wilayah.akhirPeriode,
             },
             'pk':wilayah.pk
         }

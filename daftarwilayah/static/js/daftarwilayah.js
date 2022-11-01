@@ -3,12 +3,20 @@ function get_wilayah() {
         
         for (let i = 0; i < item.length; i++) {
             $("#daftar_wilayah").append(`
-            <div class="card">
+            <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+
+
+            <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <div class="card-title"><p>${item[i].fields.name}</p></div>
+                    <div class="card-title"><p class="card-title">${item[i].fields.name}</p></div>
                     <hr class="line">
-                    <div class="card-content"><p>${item[i].fields.kota}</p></div>
-                    <div class="card-content"><p>${item[i].fields.kuota_terisi}/${item[i].fields.kuota_max}</p></div>
+                    <div class="card-content"><p>${item[i].fields.description.substring(0,70)}...</p></div>
                     <div class="detail-card"><a onclick="get_detail(${item[i].pk})" type="button">Lihat selengkapnya >></a></div>
                 </div>
             </div>
@@ -48,13 +56,12 @@ function newWilayah() {
         } else {
             $("#daftar_wilayah").append(`
         
-            <div class="card">
+            <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <div class="card-title"><p>${item.fields.name}</p></div>
+                    <div class="card-title"><p class="card-title">${item[i].fields.name}</p></div>
                     <hr class="line">
-                    <div class="card-content"><p>${item.fields.kota}</p></div>
-                    <div class="card-content"><p>0/${item.fields.kuota_max}</p></div>
-                    <div class="detail-card"><a onclick="get_detail(${item.pk})" type="button">Lihat selengkapnya >></a></div>
+                    <div class="card-content"><p>${item[i].fields.description.substring(0,70)}...</p></div>
+                    <div class="detail-card"><a onclick="get_detail(${item[i].pk})" type="button">Lihat selengkapnya >></a></div>
                 </div>
             </div>
             
@@ -68,7 +75,8 @@ function newWilayah() {
     document.getElementById("kebutuhan").value = ""
     document.getElementById("deskripsi").value = ""
     document.getElementById("kuota").value = ""
-    document.getElementById("jangkaWaktu").value = ""
+    document.getElementById("waktuMulai").value = ""
+    document.getElementById("waktuSelesai").value = ""
     document.getElementById("form-bg").style.display = "none"
 
     get_kota()
@@ -96,8 +104,12 @@ function get_detail(pk) {
                     <td class="detail-content isi">${item.fields.kuota_terisi}/${item.fields.kuota_max}</td>
                 </tr>
                 <tr>
-                    <td class="detail-content">Jangka waktu</td>
-                    <td class="detail-content isi">${item.fields.jangka_waktu}</td>
+                    <td class="detail-content">Awal periode</td>
+                    <td class="detail-content isi">${item.fields.awal_periode}</td>
+                </tr>
+                <tr>
+                    <td class="detail-content">Akhir periode</td>
+                    <td class="detail-content isi">${item.fields.akhir_periode}</td>
                 </tr>
                 <tr>
                     <td class="detail-content">Deskripsi</td>
