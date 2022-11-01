@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+
+<title>Register</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<link rel="stylesheet" href="{% static '/css/register.css' %}">
+
+{% endblock meta %}
+
+{% block content %}
+
+<section>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Pilih role</h5>
+            <div class="pilih-role">
+                <a class="btn-role" href="{% url 'authentication:register-relawan' %}">Relawan</a>
+                <a class="btn-role" href="{% url 'authentication:register-PJ' %}">PJ Wilayah</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-btn">
+        <a class="back-link" style="color:white;" href="{% url 'authentication:login' %}">Kembali</a>
+    </div>
+</section>
+
+{% endblock content %}

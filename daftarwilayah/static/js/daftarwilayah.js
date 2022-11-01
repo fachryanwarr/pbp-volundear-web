@@ -120,12 +120,20 @@ function get_kota() {
 
         document.getElementById("daftar-kota").innerHTML = ""
 
-        for (let i = 0; i< item.list_kota.length; i++) {
-            $("#daftar-kota").append(`
-                <option value="${item.list_kota[i]}">${item.list_kota[i]}</option>
-            `)
-        }
+        console.log(item.list_kota.length)
 
+        if (item.list_kota.length == 0) {
+            $("#daftar-kota").append(`
+                <option value="">Masukkan wilayah</option>
+            `)
+        } else {
+
+            for (let i = 0; i< item.list_kota.length; i++) {
+                $("#daftar-kota").append(`
+                    <option value="${item.list_kota[i]}">${item.list_kota[i]}</option>
+                `)
+            }
+        }
     })
 }
 
@@ -135,6 +143,7 @@ function filter() {
     document.getElementById("daftar_wilayah").innerHTML = ""
 
     $.get('./json', function(item) {
+
         for (let i = 0; i < item.length; i++) {
             if (item[i].fields.kota == kota) {
                 $("#daftar_wilayah").append(`

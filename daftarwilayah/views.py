@@ -30,7 +30,7 @@ def add_wilayah(request):
         kebutuhan = request.POST.get('kebutuhan')
         jangka_waktu = request.POST.get('jangka_waktu')
 
-        wilayah = Wilayah.objects.create(user=request.user, name=name, kota=kota, address=address,
+        wilayah = Wilayah.objects.create(pj=request.user, name=name, kota=kota, address=address,
             kuota_max=kuota_max, description=description, kebutuhan=kebutuhan, jangka_waktu=jangka_waktu)
         
         hasil = {
