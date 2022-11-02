@@ -1,33 +1,27 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block meta %}
 <title>Komentar</title>
-<style>
-    p{
-        color: white;
-    }
-    h1{
-        color: white;
-    }
-</style>
+<link
+  rel="stylesheet"
+  href="{% static 'js/css/tambahArtikel.css' %}"
+/>
 {% endblock meta %}
 
 {% block content %}
-<body>
-    <section>
-        <div class="container p-5">
-            <h1>Tambah Komentar</h1>
-            <br>
-            <div class="form-group">
-                <form method="POST" action="">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button class="btn btn-secondary">Tambah Komentar</button>
-                </form>
-            </div>
+<section class="section3">
+    <div class="container p-5">
+        <h1>Tambah Komentar</h1>
+        <br>
+        <div class="form-group">
+            <form method="POST" action="">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-secondary">Tambah Komentar</button>
+            </form>
         </div>
-        {% include 'footer.html' %}
-    </section>
-</body>
+    </div>
+</section>
 
 {% endblock content %}
