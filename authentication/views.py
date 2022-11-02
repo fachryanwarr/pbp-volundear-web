@@ -63,7 +63,7 @@ def login_user(request):
 
         if user is not None:
             login(request, user)
-            response = HttpResponseRedirect(reverse("daftarwilayah:show_wilayah"))
+            response = HttpResponseRedirect(reverse("landingpage:show_landingpage"))
 
             return response
         else:
@@ -75,5 +75,5 @@ def login_user(request):
 
 def logout_user(request):
     logout(request)
-    response = HttpResponseRedirect(reverse('daftarwilayah:show_wilayah'))
+    response = HttpResponseRedirect(reverse('landingpage:show_landingpage'))
     return response
