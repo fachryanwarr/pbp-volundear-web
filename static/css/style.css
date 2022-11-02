@@ -1,6 +1,8 @@
-body {
-    background-color: #060C23;
+* {
     font-family: "Lexend";
+}
+body {
+    background-color: #1E1E1E;
 }
 .sub-title {
     margin-left: 10px;

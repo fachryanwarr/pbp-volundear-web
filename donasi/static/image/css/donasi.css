@@ -59,9 +59,7 @@ div {
 }
 
 #carouselExampleInterval.carousel.slide {
-    align-content: center;
-    
-
+    margin-top: -10px;
 }
 
 #paragraf {
@@ -102,19 +100,29 @@ div {
     border-radius: 3px;
     border: 0;
     padding: 20px;
+    background: #ffffff;
 }
 .card-title{
     background-color: #4EC1F3;
     text-align: left;
+    margin-left: -20px;
+    margin-top: 20;
+    margin-bottom: 10;
 }
 .card-subtitle{
     font-weight: 600;
     color: #3b5998;
     text-align: left;
+    margin-left: -20px;
+    margin-top: 20;
+    margin-bottom: 10;
 }
 .card-text{
     font-weight: lighter;
     text-align: left;
+    margin-left: -20px;
+    margin-top: 20;
+    margin-bottom: 10;
 }
 
 .card:hover {
@@ -122,19 +130,11 @@ div {
     box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
       -5px -5px 30px 15px rgba(0,0,0,0.22);
 }
-.circle {
-    border-radius: 3px;
-    width: 150px;
-    height: 150px;
-    background: black;
-    position: absolute;
-    right: 0px;
-    top: 0;
-    background-image: linear-gradient(to top, #ac2bac 0%, #4EC1F3 100%);
-    border-bottom-left-radius: 170px;
-  }
+
 
 .card-body{
     text-align: left;
 }
+
+
 

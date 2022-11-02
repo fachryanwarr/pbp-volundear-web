@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from authentication.models import User
 
 class Artikel(models.Model):
     penulis = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -7,6 +7,15 @@ class Artikel(models.Model):
     rilis = models.DateField(auto_now_add=True)
     pembuka = models.TextField(default=None) 
     isi = models.TextField()
+
+    class Meta:
+        ordering = ['-pk']
+
+class Komentar(models.Model):
+    artikel = models.ForeignKey(Artikel,related_name="comments", on_delete=models.CASCADE)
+    penulis = models.ForeignKey(User, on_delete=models.CASCADE)
+    waktu = models.DateField(auto_now_add=True)
+    deskripsi = models.TextField()
 
     class Meta:
         ordering = ['-pk']

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+
+<title>Register Relawan</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+{% endblock meta %}
+
+{% block content %}
+
+<form method="POST" action="">
+    {% csrf_token %}
+        <h2 class="fw-bold mb-2 text-uppercase mb-5">Formulir Registrasi Relawan</h2>
+
+        <div class="form-outline form-white mb-4">
+            {{ form.as_table }} 
+        </div>
+
+        <button class="btn btn-outline-light btn-lg px-5" type="submit">Daftar</button>
+
+</form>
+
+{% endblock content %}
