@@ -4,40 +4,39 @@
 {% block meta %}
 
 <title>Profile</title>
-
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="{% static '/css/profile.css' %}">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     function get_detail() {
     $.get('/profile/get_detail', function(item) {
         
             $("#detail-user").append(`
-            <div><h3 class="detail-title">{{user.username}}</h3></div>
+            <h3>{{user.username}}</h3>
             <div class="table-profile">
                 <table>
-                    <tr class="detail-row">
-                        <td class="detail-lbl">Nama lengkap</td>
-                        <td class="detail-content">${item.fields.nama}</td>
+                    <tr>
+                        <td>Username</td>
+                        <td>${item.fields.nama}</td>
                     </tr>
-                    <tr class="detail-row">
-                        <td class="detail-lbl">Tanggal lahir</td>
-                        <td class="detail-content">${item.fields.tanggal_lahir}</td>
+                    <tr>
+                        <td>Tanggal lahir</td>
+                        <td>${item.fields.tanggal_lahir}</td>
                     </tr>
-                    <tr class="detail-row">
-                        <td class="detail-lbl">Jenis kelamin</td>
-                        <td class="detail-content">${item.fields.gender}</td>
+                    <tr>
+                        <td>Jenis kelamin</td>
+                        <td>${item.fields.gender}</td>
                     </tr>
-                    <tr class="detail-row">
-                        <td class="detail-lbl">No telepon</td>
-                        <td class="detail-content">${item.fields.phone_number}</td>
+                    <tr>
+                        <td>No telepon</td>
+                        <td>${item.fields.phone_number}</td>
                     </tr>
-                    <tr class="detail-row">
-                        <td class="detail-lbl">Pekerjaaan</td>
-                        <td class="detail-content">${item.fields.pekerjaan}</td>
+                    <tr>
+                        <td>Pekerjaaan</td>
+                        <td>${item.fields.pekerjaan}</td>
                     </tr>
-                    <tr class="detail-row">
-                        <td class="detail-lbl">Alamat</td>
-                        <td class="detail-content">${item.fields.alamat}</td>
+                    <tr>
+                        <td>Alamat</td>
+                        <td>${item.fields.alamat}</td>
                     </tr>
                 </table>
             </div>
@@ -58,54 +57,43 @@
 
 <br style="color:white;">
 
-<div id="form-bg">
-    <div id="form-update">
-        <div class="modal-header">
-            <h3 id="modal-title">Update Profile</h3>
-        </div>
-        <div class="modal-body" style="color:white;">
-            <form>
-                {% csrf_token %}
-                
-                <div class="modal-content">
-                    <div class="label-form"><label>Nama panjang</label></div>
-                    <div class="input-form"><input type="text" id="nama"></div>
-                </div>
+<div class="modal-body" style="color:white;">
+    <form>
+        {% csrf_token %}
         
-                <div class="modal-content">
-                    <div class="label-form"><label>Tanggal lahir</label></div>
-                    <div class="input-form"><input type="date" id="tanggal_lahir"></div>
-                </div>
+        <div class="modal-content">
+            <div class="label-form"><label>Nama panjang</label></div>
+            <div class="input-form"><input type="text" id="nama"></div>
+        </div>
+
+        <div class="modal-content">
+            <div class="label-form"><label>Tanggal lahir</label></div>
+            <div class="input-form"><input type="date" id="tanggal_lahir"></div>
+        </div>
+
+        <div class="modal-content">
+            <div class="label-form"><label>Jenis Kelamin</label></div>
+            <div>
+                <input type="radio" id="pria" name="gender" value="Wanita">
+                <label for="pria">Wanita</label><br>
+                <input type="radio" id="wanita" name="gender" value="Pria">
+                <label for="wanita">Pria</label><br>
+            </div>
+        </div>
+        <div class="modal-content">
+            <div class="label-form"><label>No telepon</label></div>
+            <div class="input-form"><input type="text" id="telp"></div>
+        </div>
+        <div class="modal-content">
+            <div class="label-form"><label>Pekerjaaan</label></div>
+            <div class="input-form"><input type="text" id="pekerjaan"></div>
+        </div>
+        <div class="modal-content">
+            <div class="label-form"><label>Alamat</label></div>
+            <div class="input-form"><textarea id="alamat"></textarea></div>
+        </div>
         
-                <div class="modal-content">
-                    <div class="label-form"><label>Jenis Kelamin</label></div>
-                    <div>
-                          <input type="radio" id="pria" name="gender" value="Wanita">
-                          <label for="pria">Wanita</label><br>
-                          <input type="radio" id="wanita" name="gender" value="Pria">
-                          <label for="wanita">Pria</label><br>
-                    </div>
-                </div>
-                <div class="modal-content">
-                    <div class="label-form"><label>No telepon</label></div>
-                    <div class="input-form"><input type="text" id="telp"></div>
-                </div>
-                <div class="modal-content">
-                    <div class="label-form"><label>Pekerjaaan</label></div>
-                    <div class="input-form"><input type="text" id="pekerjaan"></div>
-                </div>
-                <div class="modal-content">
-                    <div class="label-form"><label>Alamat</label></div>
-                    <div class="input-form"><textarea id="alamat"></textarea></div>
-                </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button onclick="close_form()" class="btn-form" type="button">Batal</button>
-            <button onclick="" class="btn-form">Save</button>
-        </div>
-    </div>
+    
+    </form>
 </div>
-
-
 {% endblock content %}

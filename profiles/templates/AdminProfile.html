@@ -4,14 +4,14 @@
 {% block meta %}
 
 <title>Profile</title>
-
+<link rel="stylesheet" href="{% static '/css/profile.css' %}">
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     function get_detail() {
     $.get('/profile/get_detail', function(item) {
         
             $("#detail-user").append(`
-            <h1>{{user.username}}</h1>
+            <h3>{{user.username}}</h3>
             <div class="table-profile">
                 <table>
                     <tr>
@@ -74,10 +74,10 @@
         <div class="modal-content">
             <div class="label-form"><label>Jenis Kelamin</label></div>
             <div>
-                  <input type="radio" id="pria" name="gender" value="Wanita">
-                  <label for="pria">Wanita</label><br>
-                  <input type="radio" id="wanita" name="gender" value="Pria">
-                  <label for="wanita">Pria</label><br>
+                <input type="radio" id="pria" name="gender" value="Wanita">
+                <label for="pria">Wanita</label><br>
+                <input type="radio" id="wanita" name="gender" value="Pria">
+                <label for="wanita">Pria</label><br>
             </div>
         </div>
         <div class="modal-content">

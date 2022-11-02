@@ -25,7 +25,7 @@ def create_donasi_ajax(request):
         jumlah = request.POST.get('jumlah')
         pesan = request.POST.get('pesan')
         # donasi = Donasi.objects.create(nama=nama, jumlah=jumlah, pesan=pesan, user=request.user)
-        donasi = Donasi.objects.create(request.user, nama=nama, jumlah=jumlah, pesan=pesan)
+        donasi = Donasi.objects.create(user=request.user, nama=nama, jumlah=jumlah, pesan=pesan)
         hasil = {'pk':donasi.pk,
                 'fields':{
                 'nama':donasi.nama,
