@@ -1,11 +1,11 @@
 from django.views.generic import CreateView
-from authentication.models import VolundearUser
+from authentication.models import User
 from authentication.forms import PJSignUpForm
 from django.contrib.auth import login
 from django.shortcuts import redirect
 
 class PJSignUpView(CreateView):
-    model = VolundearUser
+    model = User
     form_class = PJSignUpForm
     template_name = 'register_PJ.html'
 

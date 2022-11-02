@@ -1,11 +1,11 @@
 from django.views.generic import CreateView
-from authentication.models import VolundearUser
+from authentication.models import User
 from authentication.forms import RelawanSignUpForm
 from django.contrib.auth import login
 from django.shortcuts import redirect
 
 class RelawanSignUpView(CreateView):
-    model = VolundearUser
+    model = User
     form_class = RelawanSignUpForm
     template_name = 'register_relawan.html'
 

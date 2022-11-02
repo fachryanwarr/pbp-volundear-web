@@ -1,12 +1,12 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
-from authentication.models import VolundearUser
+from authentication.models import User
 
 class RelawanSignUpForm(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
-        model = VolundearUser
+        model = User
         fields = {'username', 'password1', 'password2'}
     
     def __init__(self, *args, **kwargs):
@@ -30,7 +30,7 @@ class RelawanSignUpForm(UserCreationForm):
 class PJSignUpForm(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
-        model = VolundearUser
+        model = User
         fields = {'username','password1', 'password2'}
 
     def __init__(self, *args, **kwargs):

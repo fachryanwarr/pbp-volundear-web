@@ -74,13 +74,13 @@
 }
 .card {
     width: 20vw;
-    height: 30vw;
     text-align: center;
     background-color: #4EC1F3;
     color: black;
     border-radius: 10px;
     margin: 15px;
 }
+
 .card-title {
     font-weight: bold;
 }
@@ -107,7 +107,6 @@
 ******************/
 
 .navbar {
-    height: 50px;
     background-color: #4EC1F3;
     margin-bottom: 10px;
 }
@@ -144,7 +143,7 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 #detail-wilayah {
-    width: 500px;
+    width: 700px;
     margin: auto;
     overflow: auto;
     background-color: #4EC1F3;
@@ -166,7 +165,7 @@
     border: none;
 }
 .detail-table {
-    width: 500px;
+    width: 700px;
     margin: auto;
     overflow: auto;
     background-color: #4EC1F3;
@@ -178,9 +177,9 @@
     animation-duration: 0.4s
 }
 .detail-content {
-    padding: 10px;
-    width: 200px;
-    color: black;
+    padding: 15px;
+    width: 500px;
+    color: rgb(45, 44, 44);
     vertical-align: top;
 }
 .detail-footer {
@@ -188,6 +187,9 @@
     border-color: black;
     border-radius: 10px;
     padding-bottom: 10px;
+}
+.deskripsi {
+    text-align: justify;
 }
 
 
@@ -213,5 +215,11 @@
 #form-filter {
     text-align: right;
     margin-right: 20px;
+    color: white;
+}
+.btn-terapkan {
+    background-color: #1E1E1E;
+    border-radius: 10px;
+    border-color: white;
     color: white;
 }
