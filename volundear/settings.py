@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'landingpage',
     'daftarrelawan',
     'authentication',
+    'profiles',
 ]
 
 MIDDLEWARE = [

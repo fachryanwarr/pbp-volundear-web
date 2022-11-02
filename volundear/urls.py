@@ -8,4 +8,5 @@ urlpatterns = [
     path('daftarwilayah/', include('daftarwilayah.urls')),
     path('', include('landingpage.urls')),
     path('auth/', include('authentication.urls')),
+    path('profile/', include('profiles.urls')),
 ]
