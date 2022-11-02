@@ -4,8 +4,8 @@
     box-sizing: border-box;
 }
 .section2{
-    margin-top: -1%;
-    background: #060C23
+    background: #060C23;
+    margin-top: -10px;
 }
 .section1{
     display: flex;

@@ -2,11 +2,11 @@ from email.policy import default
 from multiprocessing import dummy
 from statistics import mode
 from django.db import models
-from authentication.models import VolundearUser
+from authentication.models import User
 import datetime
 
 class Wilayah(models.Model):
-    pj = models.ForeignKey(VolundearUser, on_delete=models.CASCADE)
+    pj = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     kota = models.CharField(max_length=20)
     kebutuhan = models.TextField(default="")
@@ -14,4 +14,5 @@ class Wilayah(models.Model):
     kuota_max = models.IntegerField()
     kuota_terisi = models.IntegerField(default = 0)
     description = models.TextField()
-    jangka_waktu = models.DateField()
+    awalPeriode = models.CharField(max_length=30)
+    akhirPeriode = models.CharField(max_length=30)
