@@ -1,0 +1,140 @@
+body{
+    background: #060C23;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+#sliderproduct{
+    width: 100%;
+}
+
+#sliderproduct .carousel-inner {
+    overflow: visible;
+}
+
+h3 {
+    color : #ffffff;
+    grid-row: 1;
+}
+
+h1 {
+    color : #ffffff;
+    text-align: center;
+    
+}
+
+h5 {
+    color : black;
+    text-align: center;
+    font-weight: bolder;
+    
+}
+
+h6 {
+    color : black;
+    text-align: center;
+    font-weight: lighter;
+    
+}
+
+div {
+    text-align: center;
+}
+
+.bg {
+    grid-row: 2;
+}
+
+.btn {
+    grid-row: 3;
+}
+
+#judul {
+    color: #4EC1F3;
+    text-align: left;
+    margin: 25px 30px 25px 30px;;
+    font-weight: 700;
+    font-size: 40px ;
+}
+
+#carouselExampleInterval.carousel.slide {
+    margin-top: 1px;
+}
+
+#paragraf {
+    color: #ffffff;
+    margin: 25px 30px 25px 30px;
+    text-align: justify; 
+    grid-row: 4;
+}
+
+#donaDear {
+    text-align: center;
+    font-weight: bolder; 
+    margin: 25px 30px 25px 30px;
+    color: #ffffff;
+}
+
+#card-donasi {
+    margin: 25px 30px 25px 30px;
+    text-align: justify; 
+}
+#crs {
+    color: #ffffff;
+    text-align: center;
+}
+#crs1 {
+    color: #ffffff;
+    text-align: center;
+}
+.card{
+    margin: 30px auto;
+    width: 450px;
+    height: 200px;
+    box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+    cursor: pointer;
+    transition: 0.4s;
+    position: relative;
+    margin: 100px auto;
+    border-radius: 3px;
+    border: 0;
+    padding: 20px;
+    background: #ffffff;
+}
+.card-title{
+    background-color: #4EC1F3;
+    text-align: left;
+    margin-left: -20px;
+    margin-top: 20;
+    margin-bottom: 10;
+}
+.card-subtitle{
+    font-weight: 600;
+    color: #3b5998;
+    text-align: left;
+    margin-left: -20px;
+    margin-top: 20;
+    margin-bottom: 10;
+}
+.card-text{
+    font-weight: lighter;
+    text-align: left;
+    margin-left: -20px;
+    margin-top: 20;
+    margin-bottom: 10;
+}
+
+.card:hover {
+    transform: scale(0.9, 0.9);
+    box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+      -5px -5px 30px 15px rgba(0,0,0,0.22);
+}
+
+
+.card-body{
+    text-align: left;
+}
+
+
+

@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+
+<title>Profile</title>
+<link rel="stylesheet" href="{% static '/css/profile.css' %}">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    function get_detail() {
+    $.get('/profile/get_detail', function(item) {
+        
+            $("#detail-user").append(`
+            <h3>{{user.username}}</h3>
+            <div class="table-profile">
+                <table>
+                    <tr>
+                        <td>Username</td>
+                        <td>${item.fields.nama}</td>
+                    </tr>
+                    <tr>
+                        <td>Tanggal lahir</td>
+                        <td>${item.fields.tanggal_lahir}</td>
+                    </tr>
+                    <tr>
+                        <td>Jenis kelamin</td>
+                        <td>${item.fields.gender}</td>
+                    </tr>
+                    <tr>
+                        <td>No telepon</td>
+                        <td>${item.fields.phone_number}</td>
+                    </tr>
+                    <tr>
+                        <td>Pekerjaaan</td>
+                        <td>${item.fields.pekerjaan}</td>
+                    </tr>
+                    <tr>
+                        <td>Alamat</td>
+                        <td>${item.fields.alamat}</td>
+                    </tr>
+                </table>
+            </div>
+        `)
+        
+    })
+    }
+
+    get_detail()
+</script>
+
+{% endblock meta %}
+
+{% block content %}
+<section id="detail-user" style="color:white;">
+
+</section>
+
+<br style="color:white;">
+
+<div class="modal-body" style="color:white;">
+    <form>
+        {% csrf_token %}
+        
+        <div class="modal-content">
+            <div class="label-form"><label>Nama panjang</label></div>
+            <div class="input-form"><input type="text" id="nama"></div>
+        </div>
+
+        <div class="modal-content">
+            <div class="label-form"><label>Tanggal lahir</label></div>
+            <div class="input-form"><input type="date" id="tanggal_lahir"></div>
+        </div>
+
+        <div class="modal-content">
+            <div class="label-form"><label>Jenis Kelamin</label></div>
+            <div>
+                <input type="radio" id="pria" name="gender" value="Wanita">
+                <label for="pria">Wanita</label><br>
+                <input type="radio" id="wanita" name="gender" value="Pria">
+                <label for="wanita">Pria</label><br>
+            </div>
+        </div>
+        <div class="modal-content">
+            <div class="label-form"><label>No telepon</label></div>
+            <div class="input-form"><input type="text" id="telp"></div>
+        </div>
+        <div class="modal-content">
+            <div class="label-form"><label>Pekerjaaan</label></div>
+            <div class="input-form"><input type="text" id="pekerjaan"></div>
+        </div>
+        <div class="modal-content">
+            <div class="label-form"><label>Alamat</label></div>
+            <div class="input-form"><textarea id="alamat"></textarea></div>
+        </div>
+        
+    
+    </form>
+</div>
+{% endblock content %}

@@ -1,7 +1,5 @@
-from tkinter.messagebox import QUESTION
 from django.contrib import admin
-from landingpage.models import Faq
-
+from landingpage.models import Faq, Feedback
 
 admin.site.register(Faq)
-# Register your models here.
+admin.site.register(Feedback)
