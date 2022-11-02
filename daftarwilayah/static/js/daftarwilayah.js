@@ -50,11 +50,12 @@ function newWilayah() {
             $("#daftar_wilayah").append(`
         
             <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/static/images/scenery.jpg" alt="scenery.jpg" style="width:100%;">
                 <div class="card-body">
-                    <div class="card-title"><p class="card-title">${item.fields.name}</p></div>
+                    <div class="card-title"><p class="card-title">${item[i].fields.name}</p></div>
                     <hr class="line">
-                    <div class="card-content"><p>${item.fields.description.substring(0,70)}...</p></div>
-                    <div class="detail-card"><a onclick="get_detail(${item.pk})" type="button">Lihat selengkapnya >></a></div>
+                    <div class="card-content"><p>${item[i].fields.description.substring(0,70)}...</p></div>
+                    <div class="detail-card"><a onclick="get_detail(${item[i].pk})" type="button">Lihat selengkapnya >></a></div>
                 </div>
             </div>
             
@@ -169,14 +170,15 @@ function filter() {
             if (item[i].fields.kota == kota) {
                 $("#daftar_wilayah").append(`                
                 <div class="card" style="width: 18rem;">
-                    <div class="card-body">
+                <img class="card-img-top" src="/static/images/scenery.jpg" alt="scenery.jpg" style="width:100%;">
+                <div class="card-body">
                         <div class="card-title"><p class="card-title">${item[i].fields.name}</p></div>
                         <hr class="line">
                         <div class="card-content"><p>${item[i].fields.description.substring(0,70)}...</p></div>
                         <div class="detail-card"><a onclick="get_detail(${item[i].pk})" type="button">Lihat selengkapnya >></a></div>
                     </div>
                 </div>
-                
+                    
                 `)
             }
         }
