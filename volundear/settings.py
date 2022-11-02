@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'landingpage',
     'daftarrelawan',
     'donasi',
-    'authentication'
+    'authentication',
+    'profiles',
 ]
 
 MIDDLEWARE = [

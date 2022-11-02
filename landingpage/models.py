@@ -5,8 +5,8 @@ class Faq(models.Model):
     answer = models.TextField()
 
 class Feedback(models.Model):
-    nama = models.TextField()
-    feedback = models.TextField()
+    nama = models.TextField(blank=False, null=True)
+    pesan_feedback = models.TextField(blank=False, null=True)
 
 
 
