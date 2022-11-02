@@ -19,16 +19,16 @@ def get_wilayah(request):
 
     return HttpResponse(serializers.serialize("json", wilayah_items), content_type="application/json")
 
-# @login_required(login_url='/auth/login/')
 @csrf_exempt
+@PJ_required(login_url='/auth/login/')
 def add_wilayah(request):
     current_user = auth.get_user(request)
 
-    # if (not current_user.is_PJ):
-    #     hasil = {
-    #         'status':True
-    #     }
-    #     return JsonResponse(hasil)
+    if (not current_user.is_PJ):
+        hasil = {
+            'status':True
+        }
+        return JsonResponse(hasil)
 
     if request.method == "POST":
         name = request.POST.get('name')
@@ -95,4 +95,16 @@ def get_daftar_kota(request):
     }
 
     return JsonResponse(hasil)
+
+# @login_required(login_url='/auth/login/')
+# def tes(request):
+#     return redirect('landingpage:show_landingpage')
+
+# @PJ_required(login_url='/auth/login/')
+# def tes_pjrequired(request):
+#     return redirect('landingpage:show_landingpage')
+
+# @relawan_required(login_url='/auth/login/')
+# def tes_relawanrequired(request):
+#     return redirect('landingpage:show_landingpage')
 

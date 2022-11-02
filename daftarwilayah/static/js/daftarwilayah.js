@@ -3,16 +3,9 @@ function get_wilayah() {
         
         for (let i = 0; i < item.length; i++) {
             $("#daftar_wilayah").append(`
-            <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-
 
             <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/static/images/scenery.jpg" alt="scenery.jpg" style="width:100%;">
                 <div class="card-body">
                     <div class="card-title"><p class="card-title">${item[i].fields.name}</p></div>
                     <hr class="line">
@@ -58,10 +51,10 @@ function newWilayah() {
         
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <div class="card-title"><p class="card-title">${item[i].fields.name}</p></div>
+                    <div class="card-title"><p class="card-title">${item.fields.name}</p></div>
                     <hr class="line">
-                    <div class="card-content"><p>${item[i].fields.description.substring(0,70)}...</p></div>
-                    <div class="detail-card"><a onclick="get_detail(${item[i].pk})" type="button">Lihat selengkapnya >></a></div>
+                    <div class="card-content"><p>${item.fields.description.substring(0,70)}...</p></div>
+                    <div class="detail-card"><a onclick="get_detail(${item.pk})" type="button">Lihat selengkapnya >></a></div>
                 </div>
             </div>
             
@@ -83,6 +76,15 @@ function newWilayah() {
 }
 
 function get_detail(pk) {
+    let role = document.getElementById("is_relawan").innerHTML
+    let is_relawan = role == "True"
+
+    let btn_daftar = is_relawan ? `<div class="detail-footer"><button class="daftar-btn" href="">Daftar</button><div>` : ``
+
+    
+    console.log(is_relawan)
+    console.log("pop")
+
     $.get('./get-detail/' + pk, function(item) {
         document.getElementById("detail-wilayah").innerHTML = `
         <div class="detail-table">
@@ -90,7 +92,7 @@ function get_detail(pk) {
                 <h3 style="font-weight: bold; ">${item.fields.name} <span><button class="x-btn float-end" onclick="exit_detail()">x</button></span></h3>
             </div>
 
-            <table>
+            <table class="detail-content-tbl">
                 <tr>
                     <td class="detail-content">Alamat lengkap</td>
                     <td class="detail-content isi">${item.fields.address}</td>
@@ -113,10 +115,10 @@ function get_detail(pk) {
                 </tr>
                 <tr>
                     <td class="detail-content">Deskripsi</td>
-                    <td class="detail-content isi">${item.fields.description}</td>
+                    <td class="detail-content isi deskripsi">${item.fields.description}</td>
                 </tr>
             </table>
-            <div class="detail-footer"><button class="daftar-btn" href="">Daftar</button><div>
+            ${btn_daftar}
         </div>
         `
     })
@@ -166,12 +168,11 @@ function filter() {
         for (let i = 0; i < item.length; i++) {
             if (item[i].fields.kota == kota) {
                 $("#daftar_wilayah").append(`                
-                <div class="card">
+                <div class="card" style="width: 18rem;">
                     <div class="card-body">
-                        <div class="card-title"><p>${item[i].fields.name}</p></div>
+                        <div class="card-title"><p class="card-title">${item[i].fields.name}</p></div>
                         <hr class="line">
-                        <div class="card-content"><p>${item[i].fields.kota}</p></div>
-                        <div class="card-content"><p>${item[i].fields.kuota_terisi}/${item[i].fields.kuota_max}</p></div>
+                        <div class="card-content"><p>${item[i].fields.description.substring(0,70)}...</p></div>
                         <div class="detail-card"><a onclick="get_detail(${item[i].pk})" type="button">Lihat selengkapnya >></a></div>
                     </div>
                 </div>

@@ -14,23 +14,28 @@
 
 {% block content %}
 <section>
-    <!-- <p style="color: white;">{{user.username}}</p>
-    <p style="color: white;">{{user.is_PJ}}</p>
-    <p style="color: white;">{{user.is_relawan}}</p> -->
+    <p id="is_relawan">{{request.user.is_relawan}}</p>
+
     <h3 class="sub-title">Daftar Wilayah</h3>
     
+    <!-- <a href="tes/">Tes Login Required</a>
+    <a href="tespj/">Tes PJ Required</a>
+    <a href="tesrelawan/">Tes relawan required</a> -->
+
     <div id="form-filter">
         <label>filter berdasarkan kota </label>
         <select id="daftar-kota">
 
         </select>
-        <button onclick="filter()" type="button">Terapkan</button>
+        <button class="btn-terapkan" onclick="filter()" type="button">Terapkan</button>
     </div>
     
     <div id="daftar_wilayah" class="flex-container">
+        {% if request.user.is_PJ %}
         <div class="card">
             <a class="btn_new" onclick="open_form()">+</a>
         </div>
+        {% endif %}
     </div>
     
     <div id="detail-bg">
