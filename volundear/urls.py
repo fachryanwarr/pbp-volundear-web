@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
+from landingpage.views import show_feedback
 
 urlpatterns = [
     path('admin/', admin.site.urls),

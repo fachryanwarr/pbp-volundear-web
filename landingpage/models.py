@@ -6,7 +6,7 @@ class Faq(models.Model):
 
 class Feedback(models.Model):
     nama = models.TextField()
-    feedback = models.TextField()
+    pesan_feedback = models.TextField()
 
 
 
