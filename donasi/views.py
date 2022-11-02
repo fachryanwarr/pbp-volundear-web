@@ -7,8 +7,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 
 # Create your views here.
-
-
 # TODO:views menampilkan donasi 
 def show_donasi(request):
     data_donasi = Donasi.objects.all()
