@@ -20,7 +20,6 @@ def show_donasi(request):
     #     return response
     
     # ambil datanya
-    # data_donasi = Donasi.objects.filter(user=request.user)
     data_donasi = Donasi.objects.all()
     context = {
     'username' : request.user.username,
@@ -30,16 +29,15 @@ def show_donasi(request):
     return render(request, "donasi.html", context)
 
 # views untuk membuat donasi baru
-# @login_required(login_url="/login/")
+@login_required(login_url="/login/")
 @csrf_exempt 
 def create_donasi_ajax(request):
-
     if request.method == "POST":
         nama = request.POST.get('nama')
         jumlah = request.POST.get('jumlah')
         pesan = request.POST.get('pesan')
         # donasi = Donasi.objects.create(nama=nama, jumlah=jumlah, pesan=pesan, user=request.user)
-        donasi = Donasi.objects.create(nama=nama, jumlah=jumlah, pesan=pesan)
+        donasi = Donasi.objects.create(request.user, nama=nama, jumlah=jumlah, pesan=pesan)
         hasil = {'pk':donasi.pk,
                 'fields':{
                 'nama':donasi.nama,
