@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'feedback.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        function get_feedback() {
+          console.log("tes")
+            $.get('/feedback_json/', function(feedbacks) {
+                for (let i = 0; i < feedbacks.length; i++) {
+                  console.log(feedbacks[i])
+                    $("#feedbacks").append(`
+                    
+                    
+                      <div class="testimonial">
+                          <div class="name">${feedbacks[i].fields.nama}</div>
+                          <p>${feedbacks[i].fields.pesan_feedback}</p>
+                      </div>
+                    
+                    
+                    `)
+                }
+            })
+        }
+
+        get_feedback()
+    </script>
+{% endblock meta %}
+
+{% block content %}
+  </head>
+  
+  <body style="background: #1E1E1E;">
+
+    <div class="testimonials">
+      <div class="inner">
+        <h1 style="text-align: cemter">Feedback</h1>
+        <div class="border"></div>
+
+        <div class="row">
+          <div class="col">  
+            <div id="feedbacks"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+
+  {% endblock content %}
