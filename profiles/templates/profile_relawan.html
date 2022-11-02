@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+
+<title>Profile</title>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+{% endblock meta %}
+
+{% block content %}
+<section class="identity" style="color:white;">
+    <h1>{{user.username}}</h1>
+    <div class="table-profile">
+        <table>
+            <tr>
+                <td>Username</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Tanggal lahir</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Jenis kelamin</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>No telepon</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Pekerjaaan</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Alamat</td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<br style="color:white;">
+
+<div class="modal-body" style="color:white;">
+    <form>
+        {% csrf_token %}
+        
+        <div class="modal-content">
+            <div class="label-form"><label>Nama panjang</label></div>
+            <div class="input-form"><input type="text" id="nama"></div>
+        </div>
+
+        <div class="modal-content">
+            <div class="label-form"><label>Tanggal lahir</label></div>
+            <div class="input-form"><input type="date" id="tanggal_lahir"></div>
+        </div>
+
+        <div class="modal-content">
+            <div class="label-form"><label>Jenis Kelamin</label></div>
+            <div>
+                  <input type="radio" id="pria" name="gender" value="Wanita">
+                  <label for="pria">Wanita</label><br>
+                  <input type="radio" id="wanita" name="gender" value="Pria">
+                  <label for="wanita">Pria</label><br>
+            </div>
+        </div>
+        <div class="modal-content">
+            <div class="label-form"><label>No telepon</label></div>
+            <div class="input-form"><input type="text" id="telp"></div>
+        </div>
+        <div class="modal-content">
+            <div class="label-form"><label>Pekerjaaan</label></div>
+            <div class="input-form"><input type="text" id="pekerjaan"></div>
+        </div>
+        <div class="modal-content">
+            <div class="label-form"><label>Alamat</label></div>
+            <div class="input-form"><textarea id="alamat"></textarea></div>
+        </div>
+        
+    
+    </form>
+</div>
+{% endblock content %}
