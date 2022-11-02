@@ -5,8 +5,8 @@
   }
   .testimonials{
     padding: 40px 0;
-    background: #f1f1f1;
-    color: #434343;
+    background: #1E1E1E;
+    color: white;
     text-align: center;
   }
   .inner{
@@ -19,9 +19,8 @@
   .border{
     width: 160px;
     height: 5px;
-    background: #6ab04c;
-    margin: 26px ;
-    justify-content: left;
+    background: #705ecf;
+    margin: 26px auto;
   }
   
   .row{
@@ -36,7 +35,7 @@
     padding: 15px;
   }
   .testimonial{
-    background: #fff;
+    background: #705ecf;
     padding: 30px;
   }
   .testimonial img{

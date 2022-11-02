@@ -1,4 +1,4 @@
-
+{% extends 'base.html' %}
 {% load static %}
 
 {% block meta %}
@@ -38,19 +38,21 @@
         get_faq()
 
         function new_feedback() {
-            console.log("tes")
 
-            const nama = $("#feedback-name").val()
-            const pesan = $("#feedback-comment").val()
+            const nama = $("#title").val()
+            const pesan = $("#description").val()
 
             const data = {name:nama, feedback:pesan, csrfmiddlewaretoken: '{{ csrf_token }}'}
 
             console.log(data)
 
-            $.ajax({url:"add_feedback/", data:data, method:"POST"})
+            $.ajax({url:"add_feedback/", data:data, method:"POST"}).done(function(item) {
+                console.log("=============")
+                console.log(item)
+            })
 
-            document.getElementById("feedback-name").value = ""
-            document.getElementById("feedback-comment").value = ""
+            document.getElementById("title").value = ""
+            document.getElementById("description").value = ""
         }
 
     </script>
@@ -72,16 +74,15 @@
                         Kisah Kami
                     </h1>
                     <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate, provident!
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla, officia.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, expedita.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero, placeat!
+                        Tingkat kesejahteraan masyarakat Indonesia masih tidak merata. Banyak desa khususnya yang jauh dari ibu kota yang belum tersentuh oleh teknologi. Selain itu, tingkat pendidikan dan kesehatannya juga belum dapat dikatakan seimbang. Sebagian dari generasi mudanya juga kurang memiliki motivasi untuk mengejar masa depan yang tinggi.
+
+Di sisi lain, kemajuan teknologi di Indonesia tidak dapat dipungkiri keberadaannya. Hal-hal baru mengenai teknologi terus ditemukan. Perkembangan-perkembangan dari teknologi yang sudah ada pun terus meningkat. Peningkatan teknologi yang sangat signifikan terjadi pada tahun 2015-2022. Inovasi terhadap teknologi selalu dilakukan. Namun, berbagai kemajuan tersebut belum dapat mengatasi berbagai permasalahan yang ada karena eksistensinya hanya terpusat di suatu wilayah.
                     </p>
                     
                 </div>
                 <div class="col-10 col-lg-6 my-6">
                     {% load static %}
-                    <img src="{% static 'banner-removebg-preview.png' %}" alt="banner-images" class="banner-images" style="width: 100%;
+                    <img src="{% static 'fix1.png' %}" alt="banner-images" class="banner-images" style="width: 100%;
                     height: 400px;
                     margin-top: 2%;">
                 </div>
@@ -95,7 +96,7 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-10 col-lg-6 my-6">
                     {% load static %}
-                    <img src="{% static 'banner-removebg-preview.png' %}" alt="banner-images" class="banner-images" style="width: 100%;
+                    <img src="{% static 'fix2.png' %}" alt="banner-images" class="banner-images" style="width: 100%;
                     height: 400px;
                     margin-top: 2%;">
                 </div>
@@ -107,10 +108,7 @@
                         Apa Itu Volundear?
                     </h1>
                     <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate, provident!
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla, officia.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, expedita.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero, placeat!
+                        Volundear merupakan sebuah website yang dapat memfasilitasi para relawan individu yang ingin mengabdikan dirinya pada masyarakat. Selain itu, kami juga ingin menjadi wadah bagi para donatur yang ingin berdonasi. Kami berniat untuk menyatukan berbagai pihak dari berbagai bidang untuk membentuk komunitas di wilayah-wilayah yang belum terjangkau sebagai bentuk pemberdayaan masyarakat di seluruh Indonesia.
                     </p>
                     
                 </div>
@@ -138,13 +136,11 @@
                         
                         <div class="card" style="width: 16rem;">
                             {% load static %}
-                            <img src="{% static 'banner-removebg-preview.png' %}" alt="images" class="card-img-top">
+                            <img src="{% static 'wilayah.png' %}" alt="images" class="card-img-top">
                             <div class="card-body" style="color:#1E1E1E">
                                 <h5 class="card-titles">Daftar Wilayah</h5>
                                 <p class="card-text">
-                                    Lorem ipsum dolor sit amet.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, blanditiis!
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate praesentium expedita eius.
+                                    Menampilkan seluruh wilayah yang terdaftar, melakukan filter wilayah, dan mendaftarkan diri pada wilayah yang tersedia
                                 </p>
                                 <a href="#" class="btn btn-primary" style="background-color: #705cef;
                                 color: #fff;
@@ -157,13 +153,11 @@
                     <div class="col mb-4">
                         <div class="card" style="width: 16rem;">
                             {% load static %}
-                            <img src="{% static 'banner-removebg-preview.png' %}" alt="images" class="card-img-top">
+                            <img src="{% static 'donasi.png' %}" alt="images" class="card-img-top">
                             <div class="card-body" style="color:#1E1E1E">
                                 <h5 class="card-titles">Donasi</h5>
                                 <p class="card-text">
-                                    Lorem ipsum dolor sit amet.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, blanditiis!
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate praesentium expedita eius.
+                                    Bersama VolunDear, ambil peranmu untuk bisa bantu saudara-saudara yang terdampak bencana di berbagai wilayah Indonesia.
                                 </p>
                                 <a href="#" class="btn btn-primary" style="background-color: #705cef;
                                 color: #fff;
@@ -176,13 +170,11 @@
                     <div class="col mb-4">
                         <div class="card" style="width: 16rem;">
                             {% load static %}
-                            <img src="{% static 'banner-removebg-preview.png' %}" alt="images" class="card-img-top">
+                            <img src="{% static 'article.png' %}" alt="images" class="card-img-top">
                             <div class="card-body" style="color:#1E1E1E">
                                 <h5 class="card-titles">Artikel</h5>
                                 <p class="card-text">
-                                    Lorem ipsum dolor sit amet.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, blanditiis!
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate praesentium expedita eius.
+                                    Bersama Volundear, baca dan bagikan artikel seputar berita terkait donasi dan relawan serta berikan komentarmu!
                                 </p>
                                 <a href="#" class="btn btn-primary" style="background-color: #705cef;
                                 color: #fff;
@@ -195,13 +187,11 @@
                     <div class="col mb-4">
                         <div class="card" style="width: 16rem;">
                             {% load static %}
-                            <img src="{% static 'banner-removebg-preview.png' %}" alt="images" class="card-img-top">
+                            <img src="{% static 'relawan.png' %}" alt="images" class="card-img-top">
                             <div class="card-body" style="color:#1E1E1E">
                                 <h5 class="card-titles">Daftar Relawan</h5>
                                 <p class="card-text">
-                                    Lorem ipsum dolor sit amet.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, blanditiis!
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate praesentium expedita eius.
+                                    Mendaftarkan diri sebagai relawan setelah memilih wilayah, mengisi keahlian yang ditawarkan, dan mengisi kesediaan waktu
                                 </p>
                                 <a href="#" class="btn btn-primary" style="background-color: #705cef;
                                 color: #fff;
@@ -242,70 +232,27 @@
         <div id="feedback-div">
             <br><br>
             <h1 style="font-family: 'Open Sans';text-align: center;">Feedback</h1>
-            <form style="text-align: center;"  method="POST" class="form" id="feedback-form1" name="form1" enctype="multipart/form-data">
-                {% csrf_token %} 
-                <label for="nama" style="text-align: center; margin-left: -490px;">nama</label>
-                <p class="name">
-                    <input style="width: 35%" type="name" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" required placeholder="    name" id="feedback-name" />
-                </p>
-                <label for="feedback"style="text-align: center; margin-left: -470px;">feedback</label>
-                <p class="text">
-                    <textarea style="width: 35%;
-                height: 200px;
-                padding: 12px 20px;
-                box-sizing: border-box;
-                border: 2px solid #ccc;
-                border-radius: 4px;
-                background-color: #f8f8f8;
-                font-size: 16px;
-                resize: none;
-                " name="comment" type="comment" class="validate[required,length[6,300]] feedback-input" id="feedback-comment" required placeholder="write your feedback here..."></textarea>
-                </p>
-
-                <div class="feedback-submit">
-                    <button id="submit-feedback" onclick="new_feedback()" class= "button">SEND</button>
-                    
-                    <div id="myModal" class="modal">
-
-                        <!-- Modal content -->
-                        <div class="modal-content">
-                          <span class="close">&times;</span>
-                          <p>Some text in the Modal..</p>
-                        </div>
-                      
-                      </div>
-                      <script>
-                        // Get the modal
-                        var modal = document.getElementById("myModal");
-                        
-                        // Get the button that opens the modal
-                        var btn = document.getElementById("feedback-button-blue");
-                        
-                        // Get the <span> element that closes the modal
-                        var span = document.getElementsByClassName("close")[0];
-                        
-                        // // When the user clicks the button, open the modal 
-                        // btn.onclick = function() {
-                        //   modal.style.display = "block";
-                        // }
-                        
-                        // When the user clicks on <span> (x), close the modal
-                        span.onclick = function() {
-                          modal.style.display = "none";
-                        }
-                        
-                        // When the user clicks anywhere outside of the modal, close it
-                        window.onclick = function(event) {
-                          if (event.target == modal) {
-                            modal.style.display = "none";
-                          }
-                        }
-                        </script>
-                        
-                        </body>
-                        </html>
-                        
+            <form style="text-align: center;"method="POST" action="">
+                {% csrf_token %}
+                <div>
+                    <label style="text-align: center;"for="title">Nama:</label>
+                    <input style="text-align: center;"id="title" type="text" placeholder="nama" >
                 </div>
+                <div>
+                    <label style="text-align: center;"for="description">Feedback: </label>
+                    <input style="width: 35%;
+                    height: 200px;
+                    padding: 12px 20px;
+                    box-sizing: border-box;
+                    border: 2px solid #ccc;
+                    border-radius: 4px;
+                    background-color: #f8f8f8;
+                    font-size: 16px;
+                    resize: none;
+                    "id="description" type="text" style="height:50px; width:200px" name="description" placeholder="Write your feedback here..." >
+                </div>
+                <button style="text-align: center;" onclick="new_feedback()">Add</button>
+                <br><br>
             </form>
         </div>
       </div>

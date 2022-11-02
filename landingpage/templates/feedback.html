@@ -1,58 +1,59 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
   <head>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'feedback.css' %}">
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="style.css">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'feedback.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
         function get_feedback() {
-            $.get('./feedback_json', function(feedbacks) {
+          console.log("tes")
+            $.get('/feedback_json/', function(feedbacks) {
                 for (let i = 0; i < feedbacks.length; i++) {
-                    $("#col").append(`
-
-                    <div class="testimonial">
-                        <div class="name">${feedbacks[i].nama}</div>
-                        <p>${feedbacks[i].pesan_feedback}</p>
-                    </div>
+                  console.log(feedbacks[i])
+                    $("#feedbacks").append(`
+                    
+                    
+                      <div class="testimonial">
+                          <div class="name">${feedbacks[i].fields.nama}</div>
+                          <p>${feedbacks[i].fields.pesan_feedback}</p>
+                      </div>
+                    
+                    
                     `)
                 }
             })
         }
-    </script>
 
+        get_feedback()
+    </script>
+{% endblock meta %}
+
+{% block content %}
   </head>
   
-  <body>
+  <body style="background: #1E1E1E;">
 
     <div class="testimonials">
       <div class="inner">
-        <h1 style="text-align: left;">Feedback</h1>
+        <h1 style="text-align: cemter">Feedback</h1>
         <div class="border"></div>
 
         <div class="row">
-          
-
-          <div id="col"></div>
-
-          <div class="col">
-            <div class="testimonial">
-              
-              <div class="name">Full name</div>
-              
-
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-              </p>
-            </div>
+          <div class="col">  
+            <div id="feedbacks"></div>
           </div>
         </div>
       </div>
     </div>
 
   </body>
-</html>
+
+  {% endblock content %}

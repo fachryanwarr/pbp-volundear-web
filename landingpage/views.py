@@ -3,11 +3,10 @@ from django.shortcuts import render
 from django.core import serializers
 from landingpage.models import Faq
 from landingpage.models import Feedback
+from django.views.decorators.csrf import csrf_exempt
 
 def show_landingpage(request):
-    data_faq = Faq.objects.all()
     context = {
-        # 'faq' : data_faq,
     }
     return render(request, "index.html", context)
 
@@ -16,9 +15,10 @@ def get_faq(request):
 
     return HttpResponse(serializers.serialize("json", FAQ), content_type="application/json")
 
+@csrf_exempt
 def new_feedback(request):
     if request.method == "POST":
-        nama = request.POST.get('nama')
+        nama = request.POST.get('name')
         pesan_feedback = request.POST.get('feedback')
         
         feedback = Feedback.objects.create(nama=nama, pesan_feedback=pesan_feedback)
