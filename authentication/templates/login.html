@@ -12,27 +12,31 @@
 
 {% block content %}
 
-    <form method="POST" action="">
-        {% csrf_token %}
-        <h2 class="title">Login</h2>
+    <section class="form border border-success p-2">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <h2 class="title">Login</h2>
 
-        <div class="form-outline form-white mb-4">
-            <label class="form-label" for="username">Username</label>
-        <input type="text" id="username" name="username" class="form-control form-control-lg">
-        
-        </div>
+            <div class="form-outline form-white mb-4">
+                <label class="form-label" for="username">Username</label>
+            <input type="text" id="username" name="username" class="form-control form-control-lg">
+            
+            </div>
 
-        <div class="form-outline form-white mb-4">
-            <label class="form-label" for="typePasswordX">Password</label>
-            <input type="password" id="password" name="password" class="form-control form-control-lg" />
-        </div>
+            <div class="form-outline form-white mb-4">
+                <label class="form-label" for="typePasswordX">Password</label>
+                <input type="password" id="password" name="password" class="form-control form-control-lg" />
+            </div>
 
-        <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+            <div class="btn-go">
+                <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+            </div>
 
-    </form>
+        </form>
+    </section>
 
     <div>
-        <p class="mb-0">Belum mempunyai akun? <a href="{% url 'authentication:register' %}" class="text-white-50 fw-bold">Register</a></p>
+        <p class="register-sign">Belum mempunyai akun? <a href="{% url 'authentication:register' %}" class="text-white-50 fw-bold">Register</a></p>
     </div>
 
     {% if messages %}
