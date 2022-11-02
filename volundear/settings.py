@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'daftarwilayah',
     'landingpage',
     'daftarrelawan',
+    'donasi',
     'authentication',
     'profiles',
 ]
