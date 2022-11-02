@@ -21,11 +21,15 @@
 <section class="section1">
     <div class="container p-5">
         <h1>Artikel</h1>
+        {% if request.user.is_authenticated %}
         <div class="d-grid gap-2 d-md-block">
             <!-- Button trigger modal -->
             <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Tambah Artikel</button>    
             <br>
         </div>
+        {% else %}
+        <h2>Ingin menambahkan artikel? <a href="{% url 'authentication:login' %}" class="text-decoration-none">Login terlebih dahulu</a></h2>
+        {% endif %}
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -80,5 +84,4 @@ type="text/javascript"
 src="{% static '/js/showArticles.js' %}"
 ></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 {% endblock content %}
