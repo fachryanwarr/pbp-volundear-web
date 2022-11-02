@@ -1,6 +1,8 @@
-<!doctype html>
-<html lang="en">
-  <head style="background-color: #1E1E1E">
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -36,45 +38,9 @@
         get_faq()
     </script>
 
-  </head>
-  <body style="color: white;
-  background-color: #1E1E1E ;">
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #4EC1F3 ">
-        <div class="container" > 
-        <a class="navbar-brand" href="#">Volundear</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">About Us</a>
-              </li>
+{% endblock meta %}
 
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Features </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="#feedback">Feedback</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="#contactus">Contact Us</a>
-            </li>
-    
-            <li class="nav-item" >
-                <a class="nav-link" href="#login">Login</a>
-            </li>
-
-          </ul>
-       
-        </div>
-       </div>
-    </nav>
-    <!-- End Navbar -->
+{% block content %}
 
     <!-- Banner -->
     <div class="banner" id="banner" style="margin-top: 50px;">
@@ -283,105 +249,4 @@
             </form>
         </div>
       </div>
-    
-    <!-- feedback-->
-
-    <!-- Footer -->
-<footer
-class="text-center text-lg-start text-white"
-style="background-color: #ffffff"
->
-<!-- Grid container -->
-<div class="container p-4 pb-0">
-<!-- Section: Links -->
-<section class="">
-<!--Grid row-->
-<div class="row">
-<!-- Grid column -->
-<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-    <h6 class="text-uppercase mb-4 font-weight-bold" style="color: black;">
-        Volundear
-    </h6>
-    <p class="text-black" style="font-size: 12px; color:#1E1E1E">
-        Memfasilitasi para relawan individu yang ingin mengabdikan dirinya pada masyarakat.
-    </p>
-</div>
-<!-- Grid column -->
-<hr class="w-100 clearfix d-md-none" />
-<!-- Grid column -->
-<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-    <h6 class="text-uppercase mb-4 font-weight-bold" style="color: black;">Products</h6>
-    
-    <p style="font-size: 16px;">
-    <a class="text-black" style="text-decoration: none; color:#1E1E1E">Daftar Relawan</a>
-    </p>
-    <p style="font-size: 16px;">
-    <a class="text-black" style="text-decoration: none; color: #1E1E1E;">Donasi</a>
-    </p>
-    
-</div>
-<!-- Grid column -->
-<hr class="w-100 clearfix d-md-none" />
-<!-- Grid column -->
-<hr class="w-100 clearfix d-md-none" />
-<!-- Grid column -->
-<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-    <h6 class="text-uppercase text-black mb-4 font-weight-bold" style="color:#1E1E1E">Contact</h6>
-    <p class="text-black" style="font-size: 16px; color:#1E1E1E"><i class="fas fa-home mr-3"></i> Depok, Indonesia</p>
-    <p class="text-black" style="font-size: 16px; color:#1E1E1E"><i class="fas fa-envelope mr-3"></i> volundear@gmail.com</p>
-    <p class="text-black" style="font-size: 16px; color:#1E1E1E"><i class="fas fa-phone mr-3"></i> + 62 858385838458</p>
-</div>
-<!-- Grid column -->
-<!-- Grid column -->
-<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-    <h6 class="text-uppercase text-black mb-4 font-weight-bold" style="color:#1E1E1E">Our Social Media</h6>
-    <!-- Facebook -->
-    <a
-        class="btn btn-primary btn-floating m-1"
-        style="background-color: #3b5998"
-        href="#!"
-        role="button"
-        ><i class="fab fa-facebook-f"></i
-    ></a>
-
-    <!-- Twitter -->
-    <a
-        class="btn btn-primary btn-floating m-1"
-        style="background-color: #55acee"
-        href="#!"
-        role="button"
-        ><i class="fab fa-twitter"></i
-    ></a>
-
-    <!-- Instagram -->
-    <a
-        class="btn btn-primary btn-floating m-1"
-        style="background-color: #ac2bac"
-        href="#!"
-        role="button"
-        ><i class="fab fa-instagram"></i
-    ></a>
-
-</div>
-</div>
-<!--Grid row-->
-</section>
-<!-- Section: Links -->
-</div>
-<!-- Grid container -->
-
-<!-- Copyright -->
-<div
-class="text-center p-3"
-style="background-color: #4EC1F3; color: black;"
->© 2020 Copyright:
-<a class="text-black" href="#" style="text-decoration: none;">Volundear</a>
-</div>
-<!-- Copyright -->
-</footer>
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  </body>
-</html>
+{% endblock content %}

@@ -3,12 +3,13 @@ function get_wilayah() {
         
         for (let i = 0; i < item.length; i++) {
             $("#daftar_wilayah").append(`
-            <div class="card">
+
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/static/images/scenery.jpg" alt="scenery.jpg" style="width:100%;">
                 <div class="card-body">
-                    <div class="card-title"><p>${item[i].fields.name}</p></div>
+                    <div class="card-title"><p class="card-title">${item[i].fields.name}</p></div>
                     <hr class="line">
-                    <div class="card-content"><p>${item[i].fields.kota}</p></div>
-                    <div class="card-content"><p>${item[i].fields.kuota_terisi}/${item[i].fields.kuota_max}</p></div>
+                    <div class="card-content"><p>${item[i].fields.description.substring(0,70)}...</p></div>
                     <div class="detail-card"><a onclick="get_detail(${item[i].pk})" type="button">Lihat selengkapnya >></a></div>
                 </div>
             </div>
@@ -25,7 +26,8 @@ function newWilayah() {
     const kebutuhan = $("#kebutuhan").val()
     const deskripsi = $("#deskripsi").val()
     const kuota = $("#kuota").val()
-    const jangkaWaktu = $("#jangkaWaktu").val()
+    const awalPeriode = $("#waktuMulai").val()
+    const akhirPeriode = $("#waktuSelesai").val()
 
     const data = {name:nama, 
         kota:kota, 
@@ -33,24 +35,31 @@ function newWilayah() {
         kuota_max:kuota,
         description:deskripsi,
         kebutuhan:kebutuhan,
-        jangka_waktu:jangkaWaktu, 
+        awal_periode:awalPeriode, 
+        akhir_periode:akhirPeriode,
         csrfmiddlewaretoken:'{{ csrf_token }}'
     }
 
+    
+
     $.ajax({url:"/daftarwilayah/add_new/", data:data, method:"POST"}).done(function (item) {
-        $("#daftar_wilayah").append(`
+        if (item.status) {
+            console.log("SALAH")
+            
+        } else {
+            $("#daftar_wilayah").append(`
         
-        <div class="card">
-            <div class="card-body">
-                <div class="card-title"><p>${item.fields.name}</p></div>
-                <hr class="line">
-                <div class="card-content"><p>${item.fields.kota}</p></div>
-                <div class="card-content"><p>0/${item.fields.kuota_max}</p></div>
-                <div class="detail-card"><a onclick="get_detail(${item.pk})" type="button">Lihat selengkapnya >></a></div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <div class="card-title"><p class="card-title">${item.fields.name}</p></div>
+                    <hr class="line">
+                    <div class="card-content"><p>${item.fields.description.substring(0,70)}...</p></div>
+                    <div class="detail-card"><a onclick="get_detail(${item.pk})" type="button">Lihat selengkapnya >></a></div>
+                </div>
             </div>
-        </div>
-        
-        `)
+            
+            `)
+        }
     })
 
     document.getElementById("nama").value = ""
@@ -59,13 +68,23 @@ function newWilayah() {
     document.getElementById("kebutuhan").value = ""
     document.getElementById("deskripsi").value = ""
     document.getElementById("kuota").value = ""
-    document.getElementById("jangkaWaktu").value = ""
+    document.getElementById("waktuMulai").value = ""
+    document.getElementById("waktuSelesai").value = ""
     document.getElementById("form-bg").style.display = "none"
 
     get_kota()
 }
 
 function get_detail(pk) {
+    let role = document.getElementById("is_relawan").innerHTML
+    let is_relawan = role == "True"
+
+    let btn_daftar = is_relawan ? `<div class="detail-footer"><button class="daftar-btn" href="">Daftar</button><div>` : ``
+
+    
+    console.log(is_relawan)
+    console.log("pop")
+
     $.get('./get-detail/' + pk, function(item) {
         document.getElementById("detail-wilayah").innerHTML = `
         <div class="detail-table">
@@ -73,7 +92,7 @@ function get_detail(pk) {
                 <h3 style="font-weight: bold; ">${item.fields.name} <span><button class="x-btn float-end" onclick="exit_detail()">x</button></span></h3>
             </div>
 
-            <table>
+            <table class="detail-content-tbl">
                 <tr>
                     <td class="detail-content">Alamat lengkap</td>
                     <td class="detail-content isi">${item.fields.address}</td>
@@ -87,15 +106,19 @@ function get_detail(pk) {
                     <td class="detail-content isi">${item.fields.kuota_terisi}/${item.fields.kuota_max}</td>
                 </tr>
                 <tr>
-                    <td class="detail-content">Jangka waktu</td>
-                    <td class="detail-content isi">${item.fields.jangka_waktu}</td>
+                    <td class="detail-content">Awal periode</td>
+                    <td class="detail-content isi">${item.fields.awal_periode}</td>
+                </tr>
+                <tr>
+                    <td class="detail-content">Akhir periode</td>
+                    <td class="detail-content isi">${item.fields.akhir_periode}</td>
                 </tr>
                 <tr>
                     <td class="detail-content">Deskripsi</td>
-                    <td class="detail-content isi">${item.fields.description}</td>
+                    <td class="detail-content isi deskripsi">${item.fields.description}</td>
                 </tr>
             </table>
-            <div class="detail-footer"><button class="daftar-btn" href="">Daftar</button><div>
+            ${btn_daftar}
         </div>
         `
     })
@@ -119,8 +142,6 @@ function get_kota() {
     $.get('./get-daftar-kota/', function(item) {
 
         document.getElementById("daftar-kota").innerHTML = ""
-
-        console.log(item.list_kota.length)
 
         if (item.list_kota.length == 0) {
             $("#daftar-kota").append(`
@@ -146,15 +167,13 @@ function filter() {
 
         for (let i = 0; i < item.length; i++) {
             if (item[i].fields.kota == kota) {
-                $("#daftar_wilayah").append(`
-                
-                <div class="card">
+                $("#daftar_wilayah").append(`                
+                <div class="card" style="width: 18rem;">
                     <div class="card-body">
-                        <div class="card-title"><p>${item[i].fields.name}</p></div>
+                        <div class="card-title"><p class="card-title">${item[i].fields.name}</p></div>
                         <hr class="line">
-                        <div class="card-content"><p>${item[i].fields.kota}</p></div>
-                        <div class="card-content"><p>0/${item[i].fields.kuota_max}</p></div>
-                        <a class="detail-card"b onclick="get_detail(${item.pk})" type="button">Lihat selengkapnya >></a>
+                        <div class="card-content"><p>${item[i].fields.description.substring(0,70)}...</p></div>
+                        <div class="detail-card"><a onclick="get_detail(${item[i].pk})" type="button">Lihat selengkapnya >></a></div>
                     </div>
                 </div>
                 

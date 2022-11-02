@@ -7,5 +7,5 @@ urlpatterns = [
     path('daftarrelawan/', include('daftarrelawan.urls')),
     path('daftarwilayah/', include('daftarwilayah.urls')),
     path('auth/', include('authentication.urls')),
-    path('landingpage/', include('landingpage.urls')),
+    path('', include('landingpage.urls')),
 ]
