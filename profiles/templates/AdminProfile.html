@@ -7,31 +7,56 @@
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
+    function get_detail() {
+    $.get('/profile/get_detail', function(item) {
+        
+            $("#detail-user").append(`
+            <h1>{{user.username}}</h1>
+            <div class="table-profile">
+                <table>
+                    <tr>
+                        <td>Username</td>
+                        <td>${item.fields.nama}</td>
+                    </tr>
+                    <tr>
+                        <td>Tanggal lahir</td>
+                        <td>${item.fields.tanggal_lahir}</td>
+                    </tr>
+                    <tr>
+                        <td>Jenis kelamin</td>
+                        <td>${item.fields.gender}</td>
+                    </tr>
+                    <tr>
+                        <td>No telepon</td>
+                        <td>${item.fields.phone_number}</td>
+                    </tr>
+                    <tr>
+                        <td>Pekerjaaan</td>
+                        <td>${item.fields.pekerjaan}</td>
+                    </tr>
+                    <tr>
+                        <td>Alamat</td>
+                        <td>${item.fields.alamat}</td>
+                    </tr>
+                </table>
+            </div>
+        `)
+        
+    })
+    }
 
-    function save() {
-        const nama = $("#nama").val()
-        const tanggal_lahir = $("#tanggal_lahir").val()
-        const gender = $("[name='gender']").val()
-        const telp = $("#telp").val()
-        const pekerjaan = $("#pekerjaan").val()
-        const alamat = $("#alamat").val()
-
-        const data = {nama:nama,
-            tanggal_lahir:tanggal_lahir,
-            gender:gender,
-            telp:telp,
-            pekerjaan:pekerjaan,
-            alamat:alamat,
-            csrfmiddlewaretoken:'{{ csrf_token }}'
-        }
-
-        $.ajax({url:"/profile/edit/", data:data, method:"POST"})
-}
+    get_detail()
 </script>
 
 {% endblock meta %}
 
 {% block content %}
+<section id="detail-user" style="color:white;">
+
+</section>
+
+<br style="color:white;">
+
 <div class="modal-body" style="color:white;">
     <form>
         {% csrf_token %}
@@ -70,8 +95,5 @@
         
     
     </form>
-</div>
-<div>
-    <button onclick="save()" id="save">Save</button>
 </div>
 {% endblock content %}
