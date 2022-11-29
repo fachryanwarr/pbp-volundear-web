@@ -1,1 +1,1 @@
-web: gunicorn volundear.wsgi --log-file -
+web: python manage.py migrate && gunicorn volundear.wsgi
