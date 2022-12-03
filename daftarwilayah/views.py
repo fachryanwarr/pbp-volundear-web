@@ -95,16 +95,3 @@ def get_daftar_kota(request):
     }
 
     return JsonResponse(hasil)
-
-# @login_required(login_url='/auth/login/')
-# def tes(request):
-#     return redirect('landingpage:show_landingpage')
-
-# @PJ_required(login_url='/auth/login/')
-# def tes_pjrequired(request):
-#     return redirect('landingpage:show_landingpage')
-
-# @relawan_required(login_url='/auth/login/')
-# def tes_relawanrequired(request):
-#     return redirect('landingpage:show_landingpage')
-

@@ -1,0 +1,46 @@
+body {
+    justify-content: center;
+}
+.card {
+    width: 25vw;
+    text-align: center;
+    margin: auto;
+    margin-top: 70px;
+    margin-bottom: 70px;
+
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: rgb(255, 255, 255);
+    background-color: #1E1E1E;
+}
+.card-title {
+    font-weight: bold;
+    color: white;
+    font-size: 30px;
+    padding-bottom: 30px;
+}
+.btn-role {
+    text-decoration: none;
+    color: white;
+}
+.role-btn {
+    padding: 10px;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: gold;
+    background-color: blueviolet;
+}
+.role-btn:hover {
+    background-color: rgb(99, 31, 162);
+}
+.back-btn {
+    width: 25vw;
+    margin: auto;
+    padding: 5px 20px;
+    text-align: left;
+}
+.back-link {
+    text-decoration: none;
+    margin: auto;
+    text-align: center;
+}

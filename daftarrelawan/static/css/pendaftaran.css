@@ -1,0 +1,57 @@
+body {
+    text-align: center;
+}
+.form {
+    margin: auto;
+    width: 40vw;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: white;
+}
+.title {
+    padding-top: 5px;
+    background-color: blueviolet;
+    border-radius: 10px;
+}
+.wilayah-detail {
+    font-weight: bold;
+    padding-bottom: 3px;
+}
+.form-content {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+.label-form {
+    text-align: left;
+    float: left;
+    width: 40%;
+}
+.input-form {
+    float: left;
+    width: 60%;
+    margin: auto;
+}
+.sub {
+    font-weight: bold;
+    text-align: left;
+    padding: 10px;
+}
+.btn-row {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+.btn {
+    text-decoration: none;
+    color: white;
+    background-color: blueviolet;
+    margin: 0px 20px;
+}
+.btn :hover {
+    background-color: #2e0543;
+}

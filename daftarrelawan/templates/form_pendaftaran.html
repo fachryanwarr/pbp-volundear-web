@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+
+<title>Form Pendaftran</title>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="{% static '/css/pendaftaran.css' %}">
+
+<script>
+    function new_pendaftaran() {
+        const keahlian = $("#keahlian").val()
+        const awal = $("#awal").val()
+        const akhir = $("#akhir").val()
+        const pk = document.getElementById("pkpk").innerHTML
+
+        const data = {
+            keahlian:keahlian,
+            awal:awal,
+            akhir:akhir,
+            csrfmiddlewaretoken:'{{ csrf_token }}',
+            pk:pk,
+        }
+
+        console.log(data)
+
+        $.ajax({url:`/daftarrelawan/make_data/`, data:data, method:"POST"})
+
+        location.replace('/daftarwilayah/')
+    }
+</script>
+
+<style>
+    body {
+        color: white;
+    }
+</style>
+ 
+{% endblock meta %}
+
+{% block content %}
+
+<div class="form">
+    <form>
+        <div class="title">
+            <h2>Form Pendaftaran Relawan</h2>
+            <div class="wilayah-detail">
+                <p class="nama-wilayah">{{nama_wilayah}}</p>
+            </div>
+        </div>
+        <hr>
+
+        <div class="form-content">
+            <div class="label-form"><label>Keahlian</label></div>
+            <div class="input-form"><input type="text" id="keahlian"></div>
+        </div>
+
+        <p class="sub">Periode Ketersediaan</p>
+
+        <div class="form-content">
+            <div class="label-form"><label>Awal</label></div>
+            <div class="input-form"><input type="date" id="awal"></div>
+        </div>
+
+        <div class="form-content">
+            <div class="label-form"><label>Akhir</label></div>
+            <div class="input-form"><input type="date" id="akhir"></div>
+        </div>
+
+        <p id="pkpk" style="display:none;">{{wilayah_pk}}</p>
+
+        <div class="btn-row">
+            <button class="btn">
+                <a style="text-decoration: none; color:white;" href="{% url 'daftarwilayah:show_wilayah' %}">Cancel</a>
+            </button>
+            <div id="submit_btn">
+                <button class="btn" onclick="new_pendaftaran()">
+                    Submit
+                </button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+{% endblock content %}

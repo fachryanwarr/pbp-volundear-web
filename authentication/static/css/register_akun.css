@@ -1,0 +1,38 @@
+body {
+    color: white;
+    justify-content: center;
+}
+.card {
+    width: 35vw;
+    text-align: center;
+    margin: auto;
+    margin-top: 70px;
+    margin-bottom: 70px;
+
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: rgb(255, 255, 255);
+    background-color: #1E1E1E;
+    padding: 20px;
+}
+.card-title {
+    font-weight: bold;
+    color: white;
+    font-size: 30px;
+    padding-bottom: 30px;
+}
+.content {
+    text-align: left;
+}
+.btn-daftar {
+    margin-top: 30px;
+    width: 7vw;
+    border-radius: 10px;
+    border: none;
+    background-color: white;
+    text-align: center;
+}
+.btn-daftar:hover {
+    background-color: antiquewhite;
+    
+}

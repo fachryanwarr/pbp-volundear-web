@@ -4,5 +4,6 @@ from .views import *
 appname = 'daftarrelawan'
 
 urlpatterns = [
-    path('', daftar_relawan, name='show_relawan'),
+    path('<int:id>', daftar_relawan, name='daftar_relawan'),
+    path('make_data/', make_data, name='make_data'),
     ]

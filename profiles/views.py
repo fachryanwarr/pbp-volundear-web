@@ -4,6 +4,7 @@ from django.http.response import HttpResponseRedirect
 from django.http.response import HttpResponse
 from authentication.models import User
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib import auth
 from profiles.models import DetailedUserData
 from django.http import HttpResponse, JsonResponse
@@ -38,6 +39,7 @@ def profile_admin(request):
     response = {'account':account}
     return render(request, 'AdminProfile.html', response)
 
+@csrf_exempt
 @login_required(login_url='/auth/login/')
 def edit(request):
     if request.method == "POST":
@@ -48,7 +50,7 @@ def edit(request):
         alamat = request.POST.get('alamat')
         pekerjaan = request.POST.get('pekerjaan')
 
-        detailUser = DetailedUserData(user=request.user, name=nama, gender=gender, phone_number=telp, pekerjaan=pekerjaan, alamat=alamat, tanggal_lahir=tanggal_lahir)
+        detailUser = DetailedUserData.objects.create(user=request.user, name=nama, gender=gender, phone_number=telp, pekerjaan=pekerjaan, alamat=alamat, tanggal_lahir=tanggal_lahir)
         detailUser.save()
         
         return redirect('profiles:show_profile')

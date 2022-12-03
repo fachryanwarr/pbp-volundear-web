@@ -59,9 +59,11 @@
 .btn-form, .daftar-btn{
     background-color:#4EC1F3;
     border-radius: 10px;
-    margin-left: 10px;
 }
-
+.daftar-txt {
+    text-decoration: none;
+    color: white;
+}
 
 /****************
 *      CARD     *

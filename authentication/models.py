@@ -6,4 +6,3 @@ class User(AbstractUser):
     is_relawan = models.BooleanField(default = False)
     is_PJ = models.BooleanField(default = False)
     
-

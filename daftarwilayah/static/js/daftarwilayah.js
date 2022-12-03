@@ -80,11 +80,7 @@ function get_detail(pk) {
     let role = document.getElementById("is_relawan").innerHTML
     let is_relawan = role == "True"
 
-    let btn_daftar = is_relawan ? `<div class="detail-footer"><button class="daftar-btn" href="">Daftar</button><div>` : ``
-
-    
-    console.log(is_relawan)
-    console.log("pop")
+    let btn_daftar = is_relawan ? `<div class="detail-footer"><button class="daftar-btn"><a class="daftar-txt" href="/daftarrelawan/${pk}">Daftar</a></button><div>` : ``
 
     $.get('./get-detail/' + pk, function(item) {
         document.getElementById("detail-wilayah").innerHTML = `

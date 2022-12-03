@@ -1,6 +1,3 @@
-* {
-    color: white;
-}
 /****************
 *     FORM      *
 ******************/
@@ -22,7 +19,7 @@
     width: 500px;
     margin: auto;
     overflow: auto;
-    background-color: #4EC1F3;
+    background-color: #140e42;
     border-radius: 10px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     -webkit-animation-name: animatetop;
@@ -52,36 +49,130 @@
 .label-form {
     text-align: left;
     float: left;
-    width: 30%;
+    width: 50%;
+    padding-left: 10px;
 }
 .input-form {
     float: left;
-    width: 70%;
+    width: 50%;
     margin: auto;
+    color: black;
+    text-align: left;
 }
 .btn-form, .daftar-btn{
     background-color:#4EC1F3;
     border-radius: 10px;
     margin-left: 10px;
 }
+.form-body {
+    width: 40vw;
+    margin: auto;
+    justify-content: center;
+    margin: 20px auto;
+}
+.save-row {
+    text-align: center;
+}
+#save {
+    border-radius: 10px;
+    font-weight: bold;
+    width: 100px;
+    padding: 5px;
+    background-color: blueviolet;
+    color: white;
+    border: none;
+}
+#save :hover {
+    background-color: blue;
+}
+.btn-form {
+    background-color: #140e42;
+    border-color: white;
+    color: white;
+    margin-bottom: 10px;
+}
+.btn-form:hover {
+    background-color: #472979;
+}
+
 /****************
 *     CONTENT     *
 ******************/
 #detail-user {
-    background-color: #4EC1F3;
+    background-color: #2e1b50;
     width: 70vw;
     margin: auto;
     border-radius: 10px;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+}
+#detail-user :hover {
+    background-color: #24153e;
+}
+.profile-name {
+    width: 50%;
+    justify-content: center;
+    text-align: center;
+}
+.profile-content {
+    width: 50%;
 }
 .detail-row, .detail-lbl, .detail-content, .table-profile, .detail-title {
     padding: 10px;
-    color: rgb(18, 17, 17);
+}
+.detail-row {
+    width: max-content;
 }
 .detail-title {
     font-weight: bold;
-    background-color: #0AA4E7;
     border-radius: 10px;
     padding: 10px;
+    width: 50%;
+}
+.h5 {
+    background-color: antiquewhite;
+    color: black;
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+h4 {
+    padding: 10px;
+    font-weight: bold;
+    width: 100%;
+}
+/****************
+*     FORM     *
+******************/
+.form-title {
+    padding: 10px;
+}
+.btn-PJ {
+    text-align: center;
+    margin-bottom: 20px;
+    justify-items: center;
+}
+.btn-PJ-inner {
+    width: 70vw;
+    text-align: right;
+    margin: auto;
+}
+.btn-edit, .btn-dashboard {
+    border-radius: 10px;
+    background-color: #472979;
+    border: none;
+    color: white;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.btn-dashboard:hover, .btn-edit:hover {
+    background-color: #24153e;
 }

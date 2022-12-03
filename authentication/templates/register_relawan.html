@@ -5,6 +5,7 @@
 
 <title>Register Relawan</title>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="{% static '/css/register_akun.css' %}">
 
 {% endblock meta %}
 
@@ -12,13 +13,15 @@
 
 <form method="POST" action="">
     {% csrf_token %}
-        <h2 class="fw-bold mb-2 text-uppercase mb-5">Formulir Registrasi Relawan</h2>
-
-        <div class="form-outline form-white mb-4">
-            {{ form.as_table }} 
+        <div class="card">
+            <h2 class="card-title">Formulir Registrasi Relawan<hr></h2>
+            <div class="content">
+                {{ form.as_table }} 
+            </div>
+            <div class="div-daftar">
+                <button class="btn-daftar" type="submit">Daftar</button>
+            </div>
         </div>
-
-        <button class="btn btn-outline-light btn-lg px-5" type="submit">Daftar</button>
 
 </form>
 
