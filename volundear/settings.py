@@ -91,10 +91,14 @@ WSGI_APPLICATION = 'volundear.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+   'default': {
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'railway',
+       'USER': 'postgres',
+       'PASSWORD': 'fL2BdA7v8t2pUpVVytHP',
+       'HOST': 'containers-us-west-137.railway.app',
+       'PORT': '5556',
+   }
 }
 
 if PRODUCTION:
