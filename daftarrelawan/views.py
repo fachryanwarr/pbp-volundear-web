@@ -43,6 +43,7 @@ def make_data(request):
 
         pendaftaran = Pendaftaran.objects.create(wilayah=wilayah, relawan=current_user, keahlian=keahlian, 
             mulai_periode=awal, akhir_periode=akhir)
+        pendaftaran.save()
         
         wilayah.kuota_terisi += 1
         wilayah.save()
