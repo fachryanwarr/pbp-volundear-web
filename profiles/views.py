@@ -8,6 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib import auth
 from profiles.models import DetailedUserData
 from django.http import HttpResponse, JsonResponse
+from django.core import serializers
 
 @login_required(login_url='/auth/login/')
 def show_profile(request):
@@ -77,6 +78,11 @@ def get_detail(request):
         }
 
     return JsonResponse(hasil)
+
+def get_profiles(request):
+    profiles = DetailedUserData.objects.all()
+
+    return HttpResponse(serializers.serialize("json", profiles), content_type="application/json")
 
 
 

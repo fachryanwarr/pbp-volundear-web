@@ -5,6 +5,8 @@ from daftarwilayah.models import Wilayah
 from django.contrib import auth
 from django.views.decorators.csrf import csrf_exempt
 from daftarrelawan.models import Pendaftaran
+from django.http import HttpResponse, JsonResponse
+from django.core import serializers
 
 from django.urls import reverse
 
@@ -28,6 +30,11 @@ def daftar_relawan(request, id):
     else:
         context = {}
         return redirect('daftarwilayah:show_wilayah')
+    
+def get_pendaftaran(request):
+    pendaftaran_items = Pendaftaran.objects.all()
+
+    return HttpResponse(serializers.serialize("json", pendaftaran_items), content_type="application/json")
 
 @csrf_exempt
 def make_data(request):

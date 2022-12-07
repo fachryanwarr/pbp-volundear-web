@@ -1,5 +1,5 @@
 from django.urls import path
-from profiles.views import show_profile, profile_relawan, show_edit, edit, get_detail, profile_PJ
+from profiles.views import show_profile, profile_relawan, show_edit, edit, get_detail, profile_PJ, get_profiles
 
 app_name = "profiles"
 
@@ -10,4 +10,5 @@ urlpatterns = [
     path("profile_PJ/", profile_PJ, name='profile_PJ'),
     path("edit/", edit, name="edit"),
     path("get_detail/", get_detail, name='get_detail'),
+    path("json/", get_profiles, name="get_profiles"),
 ]

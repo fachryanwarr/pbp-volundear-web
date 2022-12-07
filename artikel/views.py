@@ -20,6 +20,11 @@ def show_json(request):
     data = Artikel.objects.all()
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
+def get_comments_json(request):
+    komentar_items = Komentar.objects.all()
+
+    return HttpResponse(serializers.serialize("json", komentar_items), content_type="application/json")
+
 @login_required(login_url='/auth/login/')
 @csrf_exempt
 def create_article_AJAX(request):

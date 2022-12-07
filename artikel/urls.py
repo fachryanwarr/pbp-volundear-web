@@ -10,4 +10,5 @@ urlpatterns = [
     path('delete/<int:id>/', delete, name='delete'),
     path('full-article/<int:id>/',full_article, name='full_article'),
     path('full-article/<int:id>/komentar/', AddCommentView.as_view(), name='add_comment'),
+    path('comments-json/', get_comments_json, name='get_comments_json'),
 ]
