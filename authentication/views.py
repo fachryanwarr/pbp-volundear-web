@@ -107,12 +107,3 @@ def login_flutter(request):
         "status": False,
         "message": "Failed to Login, check your email/password."
         }, status=401)
-
-# def get_all_user(request):
-#     all_user = User.objects.values()
-
-#     return JsonResponse(all_user, status=400)
-
-# def get_user(request):
-
-#     return JsonResponse({'user': request.user})
