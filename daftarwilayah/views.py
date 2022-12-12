@@ -95,3 +95,34 @@ def get_daftar_kota(request):
     }
 
     return JsonResponse(hasil)
+
+def new_wilayah_from_flutter(request):
+    name = request.POST.get('name')
+    kota = request.POST.get('kota')
+    address = request.POST.get('address')
+    kuota_max = request.POST.get('kuota_max')
+    description = request.POST.get('description')
+    kebutuhan = request.POST.get('kebutuhan')
+    awal_periode = request.POST.get('awal_periode')
+    akhir_periode = request.POST.get('akhir_periode')
+
+    wilayah = Wilayah.objects.create(pj=request.user, name=name, kota=kota, address=address,
+        kuota_max=kuota_max, description=description, kebutuhan=kebutuhan, awalPeriode=awal_periode, akhirPeriode=akhir_periode)
+    wilayah.save()
+
+    hasil = {
+        'fields':{
+            'name':wilayah.name,
+            'kota':wilayah.kota,
+            'address':wilayah.address,
+            'kuota_max':wilayah.kuota_max,
+            'description':wilayah.description,
+            'kebutuhan':wilayah.kebutuhan,
+            'awal_periode':wilayah.awalPeriode,
+            'akhir_periode':wilayah.akhirPeriode,
+        },
+        'pk':wilayah.pk,
+        'status':200
+    }
+
+    return JsonResponse(hasil)
