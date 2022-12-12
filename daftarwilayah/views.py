@@ -96,6 +96,7 @@ def get_daftar_kota(request):
 
     return JsonResponse(hasil)
 
+@csrf_exempt
 def new_wilayah_from_flutter(request):
     name = request.POST.get('name')
     kota = request.POST.get('kota')
@@ -105,6 +106,8 @@ def new_wilayah_from_flutter(request):
     kebutuhan = request.POST.get('kebutuhan')
     awal_periode = request.POST.get('awal_periode')
     akhir_periode = request.POST.get('akhir_periode')
+
+    print(awal_periode)
 
     wilayah = Wilayah.objects.create(pj=request.user, name=name, kota=kota, address=address,
         kuota_max=kuota_max, description=description, kebutuhan=kebutuhan, awalPeriode=awal_periode, akhirPeriode=akhir_periode)
