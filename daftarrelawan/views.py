@@ -60,4 +60,20 @@ def make_data(request):
         return redirect('daftarwilayah:show_wilayah')
 
 
+@csrf_exempt
+def daftar_relawan_from_flutter(request, id):
+    id = request.POST.get('pk')
 
+    wilayah = Wilayah.objects.get(pk=id)
+    current_user = auth.get_user(request)
+
+    keahlian = request.POST.get('keahlian')
+    awal = request.POST.get('awal')
+    akhir = request.POST.get('akhir')
+
+    pendaftaran = Pendaftaran.objects.create(wilayah=wilayah, relawan=current_user, keahlian=keahlian, 
+        mulai_periode=awal, akhir_periode=akhir)
+    pendaftaran.save()
+    
+
+    return JsonResponse()

@@ -7,8 +7,10 @@ from django.contrib import messages
 
 from django.contrib import auth
 from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import get_user
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
+from authentication.models import User
 
 
 from django.contrib.auth import logout
@@ -105,3 +107,12 @@ def login_flutter(request):
         "status": False,
         "message": "Failed to Login, check your email/password."
         }, status=401)
+
+# def get_all_user(request):
+#     all_user = User.objects.values()
+
+#     return JsonResponse(all_user, status=400)
+
+# def get_user(request):
+
+#     return JsonResponse({'user': request.user})

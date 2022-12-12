@@ -9,5 +9,5 @@ urlpatterns = [
     path("add_new/", add_wilayah, name='add_new'),
     path('get-detail/<int:id>', get_wilayah_detail, name='get-wilayah'),
     path('get-daftar-kota/', get_daftar_kota, name='daftar-kota'),
-    path('add_new_flutter/', new_wilayah_from_flutter, name='new_wilayah_from_flutter')
+    path('add_new_flutter/', new_wilayah_from_flutter, name='new_wilayah_from_flutter'),
 ]
